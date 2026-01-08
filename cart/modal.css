@@ -217,6 +217,7 @@ aside {
     width: 600px;
     background-color: #fff;
     padding: 30px;
+    border-radius: 10px;
 }
 
 .modal .list {
