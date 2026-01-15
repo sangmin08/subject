@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    background-color: #ded;
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.right {
+    display: flex;
+    gap: 100px;
+}
+
+footer h2 , h3 {
+    margin-bottom: 10px;
+    color: teal;
+}

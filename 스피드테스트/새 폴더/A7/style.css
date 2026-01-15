@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: #ddd;
+    height: 100vh;
+}
+
+.container > h1 {
+    padding: 10px;
+}
+
+.grid-list {
+    width: 1400px;
+    padding: 20px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 300px;
+    gap: 30px;
+}
+
+.grid {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.grid * {
+    padding: 5px;
+}
+
+.icon {
+    font-size: 60px;
+}
+
+.grid p {
+    color: gray;
+}
+
+.grid button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: dodgerblue;
+    border: none;
+    color: #fff;
+}
