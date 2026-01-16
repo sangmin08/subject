@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart {
+    width: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkslategray;
+    color: #fff;
+}
+
+.box {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.box img {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.right,.left,.num {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.minus,.plus {
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.cancel {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: crimson;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.total {
+    padding: 15px;
+    background-color: #eee;
+}
+
+.total-price {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;    
+    font-weight: 500;
+    color: #fff;
+}
+
+.continue {
+    background-color: gray;
+}
+
+.order {
+    background-color: green;
+}
