@@ -160,6 +160,7 @@ header input {
 }
 
 section {
+    width: 100%;
     padding: 40px;
     background-color: rgb(232 241 240);
     border-left: 1px solid #ddd;
