@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    padding: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.box {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s;
+    background-color: black;
+    color: white;
+    width: 300px;
+}
+
+.top {
+    bottom: 20px;
+}
+
+.right {
+    top: 0px;
+    margin-left: 60px;
+}
+
+a:focus ~ div,
+a:hover ~ div {
+    opacity: 1;
+}
