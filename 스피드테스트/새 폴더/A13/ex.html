@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__window {
+  position: relative;
+  background-color: white;
+  padding: 4em 2em;
+}
+
+.modal__close {
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+#modal:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+    </style>
+</head>
+
+<body>
+    <div class="open">
+        <a href="#modal">Open Modal</a>
+        <div>
+            <div id="modal">
+                <div class="modal__window">
+                    <a class="modal__close" href="#">X</a>
+                    <h2>Please to meet you!</h2>
+                    <p>Hello there, I am a nice Modal Window.</p>
+                </div>
+            </div>
+</body>
+
+</html>
