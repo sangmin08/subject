@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #ddd;
+    transition: 0.5s;
+}
+
+input {
+    display: none;
+}
+
+label {
+    display: none;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+#toggle:checked ~ nav p {
+    display: block;
+}
+
+#toggle:checked ~ nav {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px){
+    label {
+        display: block;
+    }
+
+    nav p {
+        display: none;
+    }
+
+    nav {
+        width: 100px;
+    }
+}

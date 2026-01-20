@@ -84,3 +84,7 @@ body{
 input {
     display: none;
 }
+
+#right:checked ~ .slider .slide-list {
+    margin-left: -1200px;
+}
