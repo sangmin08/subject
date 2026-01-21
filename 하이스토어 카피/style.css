@@ -290,3 +290,31 @@ main {
     background-color: #e9edf5;
     color: #214595;
 }
+
+.banner {
+    width: 1280px;
+    height: 170px;
+    margin: 100px 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-box {
+    width: 2560px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: banner 10s infinite;
+}
+
+.banner a {
+    font-size: 0;
+}
+
+@keyframes banner {
+    0% {left: 0;}
+    50% {left: -1280px;}
+    100%{left: 0;}
+}
