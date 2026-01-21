@@ -55,12 +55,24 @@ header {
     border: none;
 }
 
+
 .logo {
     height: 65px;
 }
 
 .logo img {
     width: 120px;
+}
+
+.search {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.search img {
+    position: absolute;
+    margin-left: 360px;
 }
 
 .icon {
