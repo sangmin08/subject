@@ -10,13 +10,14 @@ margin: 0;
     border: 1px solid #000;
 }
 
-header {
+.link {
     background-color: #000;
 }
 
 nav {
     margin: 0 auto;
-    width: 1200px;
+    padding: 10px 0;
+    width: 1280px;
     display: flex;
     justify-content: space-between;
 }
@@ -24,4 +25,49 @@ nav {
 nav a{
     text-decoration: none;
     color: #fff;
+}
+
+nav > div {
+    display: flex;
+    gap: 30px;
+}
+
+header {
+    margin: auto;
+    width: 1280px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.left-header input {
+    width: 400px;
+    padding: 15px 20px;
+    border-radius: 20px; 
+    background-color: #eee;
+    border: none;
+}
+
+.logo {
+    height: 65px;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.icon {
+    display: flex;
+    gap: 30px;
+}
+
+.icon img {
+    width: 40px;
 }
