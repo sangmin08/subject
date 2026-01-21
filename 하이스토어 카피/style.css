@@ -246,10 +246,6 @@ main {
     gap: 30px;
 }
 
-.item {
-    border: 1px solid #000;
-}
-
 .item img {
     width: 100%;
     border-radius: 20px;
@@ -257,5 +253,40 @@ main {
 
 .item p {
     font-size: 14px;
+    margin-top: 10px;
 }
 
+.item-tag {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.item h3 {
+    color: #2145a2;
+}
+
+.item-tag div {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.best {
+    background-color: #ecf6ff;
+    color: #1e96ff;
+}
+
+.free {
+    background-color: #eefbdd;
+    color: #88d61d;
+}
+
+.sale {
+    background-color: #ffeded;
+    color: #ff4e4e;
+}
+
+.new {
+    background-color: #e9edf5;
+    color: #214595;
+}
