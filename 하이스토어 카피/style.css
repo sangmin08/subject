@@ -108,3 +108,68 @@ menu a {
     color: #797979;
 }
 
+aside {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider {
+    margin: 30px auto;
+    width: 1280px;
+    height: 500px;
+    position: relative;
+}
+
+.slide {
+    height: 500px;
+    width: 6400px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    animation: slide 20s infinite
+}
+
+.box {
+    width: 1280px;
+    height: 500px;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    15%{
+        left: 0;
+    }
+    20%{
+        left: -1280px
+    }
+    35%{
+        left: -1280px;
+    }
+    40%{
+        left: -2560px;
+    }
+    55%{
+        left: -2560px;
+    }
+    60%{
+        left: -3840px;
+    }
+    75%{
+        left: -3840px;
+    }
+    80%{
+        left: -5120px;
+    }
+    85%{
+        left: -5120px;
+    }
+    100%{
+        left: 0;
+    }
+}
