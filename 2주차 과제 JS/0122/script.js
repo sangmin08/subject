@@ -1,6 +1,6 @@
-// // 1번
+// // // 1번
 // function concatArray(arr1, arr2){
-//     return console.log(arr1.concat(arr2))
+//     return arr1.concat(arr2)
 // }
 
 // const array1 = ['A','B','C'];
@@ -14,7 +14,7 @@
 //         console.error(`현재 배열의 길이는 ${arr.length}로 ${index}은 입력 불가능합니다.`)
 //     }else {
 //         arr.splice(index, 0, value)
-//         console.log(arr)
+//         return arr
 //     }
 // }
 
@@ -26,7 +26,7 @@
 // // 3번
 // function removeElement(arr, index) {
 //     arr.splice(index,1)
-//     console.log(arr)
+//     return arr
 // }
 
 // const chars = ['A','B','C','D','E'];
@@ -37,7 +37,7 @@
 // function removeElement(arr, character){
 //     if (arr.find((value) => value === character)){
 //         r1 = arr.filter((value)=>value !== character)
-//         console.log(r1)
+//         return r1
 //     } else {
 //         console.error(`배열에 ${character}가 없습니다`);
 //     }
@@ -52,7 +52,7 @@
 // // 5번
 // function excludeElements(arr, start, end){
 //     arr.splice(start,end)
-//     console.log(arr);
+//     return arr
 // }
 
 // const nums = [1, 2, 3, 4, 5, 6, 7];
@@ -70,7 +70,7 @@
 
 // // 7번
 // function joinStrings(arr){
-//     console.log(arr.join(''))
+//     return arr.join('')
 // }
 
 // const words = ['Hello','World','!']
@@ -87,7 +87,7 @@
 //             newArr.push(arr[i])
 //         }
 //     }
-//     console.log(newArr);
+//     return newArr
 // }
 
 // const nums = [1,2,3,1,4,2,5]
