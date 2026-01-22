@@ -68,9 +68,24 @@
 
 // console.log(reverseArray(nums));
 
-// 7번
-function joinStrings(arr){
+// // 7번
+// function joinStrings(arr){
+//     let text = ""
+//     for (let i = 0; i < arr.length; i++){
+//         text += arr[i]
+//     }
+//     console.log(text);
+// }
+
+// const words = ['Hello','World','!']
+
+// console.log(joinStrings(words))
+
+// 8번
+function removeDuplicates(arr){
 
 }
 
-const words = ['Hello','World','!']
+const nums = [1,2,3,1,4,2,5]
+
+console.log(removeDuplicates(num));
