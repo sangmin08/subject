@@ -49,7 +49,7 @@
 // console.log(removeElement(chars, 'D'));
 // console.log(removeElement(chars, 'Z'));
 
-// // 5번
+// // 5번 
 // function excludeElements(arr, start, end){
 //     arr.splice(start,end)
 //     console.log(arr);
@@ -70,22 +70,59 @@
 
 // // 7번
 // function joinStrings(arr){
-//     let text = ""
-//     for (let i = 0; i < arr.length; i++){
-//         text += arr[i]
-//     }
-//     console.log(text);
+//     console.log(arr.join(''))
 // }
 
 // const words = ['Hello','World','!']
 
 // console.log(joinStrings(words))
 
-// 8번
-function removeDuplicates(arr){
+// // 8번
+// function removeDuplicates(arr){
+//     const newArr = [] 
+//     for (let i = 0; i < arr.length; i++){
+//         if(newArr.includes(arr[i])){
+//             continue;
+//         } else {
+//             newArr.push(arr[i])
+//         }
+//     }
+//     console.log(newArr);
+// }
 
+// const nums = [1,2,3,1,4,2,5]
+
+// console.log(removeDuplicates(nums));
+
+// // 9번
+// function average(arr) {
+//     console.log(arr[0]);
+//     console.log(arr[1]);
+//     const newArr = []
+//     for(let i = 0; i < arr[0].length; i++){
+//         newArr.push(arr[0][i])
+//     }
+//     for(let j = 0; j < arr[0].length; j++){
+//         newArr.push(arr[1][j])
+//     }
+//     return d
+// }
+
+// const nums = [[1,2,3,4,5],[9,10,11,12,13]]
+
+// console.log(average(nums))
+
+// 10번
+function getLongestString(arr) {
+    console.log(arr[1].length)
+    const max = ['']
+    for(let i = 0; i < arr.length; i++){
+        if (max[i].length < arr[i].length){
+            max.push(arr[i])
+        }
+    }
 }
 
-const nums = [1,2,3,1,4,2,5]
+const strings = ['apple','banana','orange','kiwi','grape']
 
-console.log(removeDuplicates(num));
+console.log(getLongestString(strings));
