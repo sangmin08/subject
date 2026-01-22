@@ -534,3 +534,9 @@ footer {
     font-size: 14px;
     margin-top: 5px;
 }
+
+.banner .control {
+    position: absolute;
+    margin-left: 1200px;
+    margin-top: 130px;
+}
