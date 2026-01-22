@@ -128,7 +128,7 @@ aside {
     position: absolute;
     top: 0;
     left: 0px;
-    animation: slide 20s infinite
+    animation: slide 18s infinite
 }
 
 .box {
@@ -182,32 +182,35 @@ aside {
     0% {
         left: 0;
     }
-    15%{
+    18%{
         left: 0;
     }
     20%{
         left: -1300px
     }
-    35%{
+    38%{
         left: -1300px;
     }
     40%{
         left: -2600px;
     }
-    55%{
+    58%{
         left: -2600px;
     }
     60%{
         left: -3900px;
     }
-    75%{
+    78%{
         left: -3900px;
     }
     80%{
         left: -5200px;
     }
-    85%{
+    88%{
         left: -5200px;
+    }
+    95%{
+        left: -5200px
     }
     100%{
         left: 0;
@@ -311,16 +314,22 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    animation: banner 10s infinite;
+    animation: banner 7s infinite;
 }
 
 .banner a {
     font-size: 0;
 }
 
+.banner img {
+    border-radius: 10px;
+}
+
 @keyframes banner {
     0% {left: 0;}
+    45%{left: 0;}
     50% {left: -1280px;}
+    95%{left:-1280px}
     100%{left: 0;}
 }
 
