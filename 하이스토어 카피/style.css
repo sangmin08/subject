@@ -23,7 +23,8 @@ nav {
 
 nav a{
     text-decoration: none;
-    color: #fff;
+    color: #aaa;
+    font-size: 11px;
 }
 
 nav > div {
@@ -80,7 +81,7 @@ header {
 }
 
 .icon img {
-    width: 40px;
+    width: 30px;
 }
 
 menu {
@@ -490,6 +491,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.left-footer {
+    font-size: 14px
 }
 
 .left-footer > div {
