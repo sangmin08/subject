@@ -11,8 +11,8 @@ function addTodo() {
     `)
 }
 
-function deleteTodo() {
-    const delbtn = document.querySelectorAll("button")
-
-    
+function deleteTodo(e) {
+    if(e.target.tagName === "BUTTON"){
+        e.target.closest("li").remove();
+    }
 }
