@@ -60,16 +60,18 @@
 
 // console.log(filterByScore(students, 80));
 
-// // 7번
-// function filterByAverageScore(students, score) {
+// 7번
+function filterByAverageScore(students, score) {
+    return Object.values(students)
+    .filter((students)=>[...students["score"]].reduce(((acc, cur) => acc + cur),0)/ students["score"].length >= score)
+    .map((key) => key["name"]);
+}
 
-// }
+const students = [
+	{ name: "Alice", score: [90, 60, 70, 100] },
+	{ name: "Bob", score: [75, 35, 40, 60] },
+	{ name: "Cathy", score: [90, 10, 20, 30] },
+	{ name: "David", score: [70, 75, 85, 95] },
+];
 
-// const students = [
-// 	{ name: "Alice", score: [90, 60, 70, 100] },
-// 	{ name: "Bob", score: [75, 35, 40, 60] },
-// 	{ name: "Cathy", score: [90, 10, 20, 30] },
-// 	{ name: "David", score: [70, 75, 85, 95] },
-// ];
-
-// console.log(filterByAverageScore(students, 80)); // ["Alice", "David"] 출력
+console.log(filterByAverageScore(students, 80)); // ["Alice", "David"] 출력
