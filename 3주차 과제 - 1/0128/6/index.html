@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>현재 시간</h2>
+        
+        <div class="box">    
+            <h2 class="sun"></h2>
+            <h1 class="time"></h1>
+        </div>
+        <h2 class="day"></h2>
+    </div>
+    <script>
+
+        
+        const time = () => {
+            const d = new Date()
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const date = d.getDate();
+            const h = d.getHours();
+            const m = d.getMinutes();
+            const s = d.getSeconds();
+
+            if (h >= 12 && m >= 0 && s >= 0){
+                document.querySelector(".sun").textContent = "오후"
+            } else {
+                document.querySelector(".sun").textContent = "오전"
+            }
+            document.querySelector(".time").textContent = `${h%12}:${m}:${s}`
+            
+            document.querySelector(".day").textContent = `${year}년 ${month}월 ${date}일`
+        }
+
+        setInterval(() => {
+            time()
+        }, 1000);
+        function renderCurrentTime() {
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<p class="title">5분타이머</p>
+<h1 class="timer">00:00</h1>
+<button class="reset">재설정</button>
+<button class="start">시작</button>
+<body>
+    <script>
+        let time = 12*60;
+        let isRunning = false
+
+        const title = document.querySelector(".title")
+        const reset = document.querySelector(".reset")
+        const start = document.querySelector(".start")
+        start.addEventListener("click",()=>{
+            if(isRunning === false) {
+                startTimer()
+            } else {
+                pauseTimer()
+            }
+        })
+        
+        function setupTimer() {
+            
+        }
+        
+        function resetTimer() {
+            
+        }
+        
+        function startTimer() {
+            isRunning = true
+            setInterval(onInterval, 1000)
+            start.textContent = "중지"
+        }
+        
+        function pauseTimer() {
+            isRunning = false
+            clearInterval(onInterval)
+        }
+        
+        const onInterval = () => {
+            time -= 1;
+            
+            const minute = Math.floor(time / 60);
+            const second = time % 60
+            
+            document.querySelector(".timer").textContent = `${minute}:${second}`
+        }
+    </script>
+</body>
+
+</html>
