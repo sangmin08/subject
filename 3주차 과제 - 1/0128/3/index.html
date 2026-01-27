@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function isWeekend(date){
+            if (date.getDay() === 0 || date.getDay() === 6){
+                return true
+            } else {
+                return false
+            }
+        }
+
+        const d1 = new Date("2022-09-25 00:00:00")
+        console.log(isWeekend(d1));
+        const d2 = new Date("2022-09-25 00:00:00")
+        console.log(isWeekend(d2));
+    </script>
+</body>
+</html>
