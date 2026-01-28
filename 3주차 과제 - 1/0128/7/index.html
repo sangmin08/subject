@@ -6,52 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<p class="title">5분타이머</p>
+<input type="text" placeholder="분 입력">
+<button class="set">설정</button>
+<p class="title">타이머</p>
 <h1 class="timer">00:00</h1>
 <button class="reset">재설정</button>
 <button class="start">시작</button>
 <body>
     <script>
-        let time = 12*60;
-        let isRunning = false
-
         const title = document.querySelector(".title")
         const reset = document.querySelector(".reset")
         const start = document.querySelector(".start")
+        const input = document.querySelector("input")
+        const set = document.querySelector(".set")
+
+        let time = 0;
+        let isRunning = false
+        let intervalId = null
+
         start.addEventListener("click",()=>{
-            if(isRunning === false) {
+            if(!isRunning) {
                 startTimer()
             } else {
                 pauseTimer()
             }
         })
-        
+
+        set.addEventListener("click",setupTimer)
+
         function setupTimer() {
+            if (isNaN(input.value)) return
+            const minutes = Number(input.value);
+
+            pauseTimer();
+            time = minutes * 60;
             
+            title.textContent = `${input.value}분타이머`
+            update()
         }
-        
+
+        reset.addEventListener("click",resetTimer)
+          
         function resetTimer() {
             
+            setupTimer()
         }
         
         function startTimer() {
+            if (intervalId) return;
+
             isRunning = true
-            setInterval(onInterval, 1000)
             start.textContent = "중지"
+
+            intervalId = setInterval(onInterval, 1000)
         }
         
         function pauseTimer() {
             isRunning = false
-            clearInterval(onInterval)
+            start.textContent = "시작"
+            clearInterval(intervalId)
+            intervalId = null
         }
         
-        const onInterval = () => {
+        function onInterval() {
             time -= 1;
             
+            if (time <= 0){
+                pauseTimer()
+                time = 0
+            }
+            update()
+        }
+        
+        function update() {
             const minute = Math.floor(time / 60);
             const second = time % 60
             
-            document.querySelector(".timer").textContent = `${minute}:${second}`
+            document.querySelector(".timer").textContent = `${minute}:${second}`   
         }
     </script>
 </body>
