@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="timer">00:00.00</h1>
+    <button class="reset">재설정</button>
+    <button class="start">시작</button>
+
+    <div class="record">
+        <p>1랩 00:00.85 00:00.85</p>
+    </div>
+    <script>
+        const timer = document.querySelector(".timer")
+        const reset = document.querySelector(".reset")
+        const start = document.querySelector(".start")
+        const recordDIV = document.querySelector(".record")
+        let time = 0
+        let isRunning = false
+        let intervalId = null
+        
+        
+        
+        start.addEventListener("click",()=>{
+            if(!isRunning) {
+                startTimer()
+            } else {
+                pauseTimer()
+            }
+        })
+
+        function resetTimer() {
+
+        }
+
+        function startTimer() {
+            if (intervalId) return
+
+            isRunning = true
+            start.textContent = "중지"
+
+            intervalId = setInterval(onInterval, 1000)
+        }
+
+        function pauseTimer() {
+
+        }
+
+        function onInterval() {
+            time += 10;
+            
+            update()
+        }
+
+        function update() {
+            const minute = Math.floor(time / 60);
+            const second = time % 60
+            const ms = (time/1000).toFixed(2)
+            
+            document.querySelector(".timer").textContent = `${minute}:${second}.${ms}`   
+        }
+
+        function lapTimer() {
+
+        }
+    </script>
+</body>
+</html>
