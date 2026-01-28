@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .record div{
+            display: flex;
+            gap: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="timer">00:00.00</h1>
+    <h1 class="timer">0:0.0</h1>
     <button class="reset">재설정</button>
     <button class="start">시작</button>
 
     <div class="record">
-        <p>1랩 00:00.85 00:00.85</p>
     </div>
     <script>
         const timer = document.querySelector(".timer")
         const reset = document.querySelector(".reset")
         const start = document.querySelector(".start")
         const recordDIV = document.querySelector(".record")
+        let count = 0
+        let re_time = 0
         let time = 0
         let isRunning = false
         let intervalId = null
-        
-        
         
         start.addEventListener("click",()=>{
             if(!isRunning) {
@@ -31,40 +36,78 @@
                 pauseTimer()
             }
         })
+        
+        reset.addEventListener("click",()=>{
+            if(!isRunning) {
+                resetTimer()
+            } else {
+                lapTimer()
+            }
+        })
 
         function resetTimer() {
+            clearInterval(intervalId)
+            intervalId = null
+            isRunning = false
+            
+            start.textContent = "시작"
+            timer.textContent = "0:0.0"
 
+            recordDIV.innerHTML=""
         }
 
         function startTimer() {
             if (intervalId) return
-
             isRunning = true
-            start.textContent = "중지"
 
-            intervalId = setInterval(onInterval, 1000)
+            start.textContent = "중지"
+            reset.textContent = "기록"
+
+            intervalId = setInterval(onInterval, 10)
         }
 
         function pauseTimer() {
+            isRunning = false
+            
+            start.textContent = "시작"
+            reset.textContent = "재설정"
 
+            clearInterval(intervalId)
+            intervalId = null
         }
 
         function onInterval() {
             time += 10;
+            re_time += 10;
             
             update()
         }
 
         function update() {
-            const minute = Math.floor(time / 60);
-            const second = time % 60
-            const ms = (time/1000).toFixed(2)
+            const minute = Math.floor(time / 60000);
+            const second = Math.floor((time % 60000) / 1000)
+            const ms = Math.floor((time%1000)/10)
             
             document.querySelector(".timer").textContent = `${minute}:${second}.${ms}`   
         }
 
         function lapTimer() {
-
+            count += 1
+            const re_minute = Math.floor(re_time / 60000);
+            const re_second = Math.floor((re_time % 60000) / 1000)
+            const re_ms = Math.floor((re_time%1000)/10)
+            const minute = Math.floor(time / 60000);
+            const second = Math.floor((time % 60000) / 1000)
+            const ms = Math.floor((time%1000)/10)
+            reset.textContent = "기록"
+            recordDIV.insertAdjacentHTML("beforeend",`
+                <div>
+                    <p>랩 : ${count}</p>
+                    <p>시간 : ${re_minute}:${re_second}.${re_ms}</p>
+                    <p>총 시간 : ${minute}:${second}.${ms}</p>
+                </div>
+            `)
+            re_time = 0
         }
     </script>
 </body>
