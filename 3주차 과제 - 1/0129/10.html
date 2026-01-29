@@ -28,25 +28,30 @@
 
         // 코드 작성
         function callCanPurchase() {
-            canPurchase(0,0)
-            .then((e)=>{
-                console.log(e);
-            })
-            canPurchase(1,1)
-            .then((e)=>{
-                console.log(e);
-            })
-            canPurchase(2,2)
-            .then((e)=>{
-                console.log(e);
-            })
+            // canPurchase(0,0)
+            // .then((e)=>{
+            //     console.log(e);
+            // })
+            // canPurchase(1,1)
+            // .then((e)=>{
+            //     console.log(e);
+            // })
+            // canPurchase(2,2)
+            // .then((e)=>{
+            //     console.log(e);
+            // })
 
 
             // canPurchase 호출
-
             async function re() {
-                const re1 = await Promise.
+                const re1 = await canPurchase(0,0)
+                console.log(re1)
+                const re2 = await canPurchase(1,1)
+                console.log(re2)
+                const re3 = await canPurchase(2,2)
+                console.log(re3)
             }
+            re()
         }
         callCanPurchase()
     </script>
