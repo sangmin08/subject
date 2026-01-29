@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        async function checkId(id) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 코드 작성
+                    if (id === "admin"){
+                        resolve()
+                    } else {
+                        reject("admin이 아닙니다.")
+                    }
+                }, 1000);
+            });
+        }
+
+        // 코드 작성
+        function callCheckId() {
+            // checkId 호출 
+            checkId("kim")
+            .then((value)=>{
+                console.log(value);
+            })
+            .catch((error)=>{
+                console.error(error)
+            })
+        }
+
+        callCheckId()
+    </script>
+</body>
+
+</html>
