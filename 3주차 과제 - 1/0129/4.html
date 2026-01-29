@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function fetchData(id) {
+            // 코드 작성
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if(id === 1){
+                        resolve(`result: 'success', id: ${id}`)
+                    } else {
+                        reject(`error: 'fail', message: 'Something went wrong.'`)
+                    }
+                }, 1000)
+            })
+        }
+
+        fetchData(1)
+            .then((data) => {
+                console.log(data); // {result: 'success', id: 1}
+            })
+            .catch((error) => {
+                console.error(error); // {error: 'fail', message: 'Something went wrong.'}
+            });
+    </script>
+</body>
+
+</html>
