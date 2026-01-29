@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function getText1() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Hello, ");
+                }, 1000);
+            });
+        }
+
+        function getText2() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("World! ");
+                }, 500);
+            });
+        }
+
+        function getText3() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("This is a test.");
+                }, 1500);
+            });
+        }
+
+        // 코드 작성
+        // // Promise의 then만을 사용
+        // getText1(),getText2(),getText3()
+        // .then((e)=>{
+        //     console.log(e);
+        // })
+
+        // Promise.all을 사용
+        Promise.all([getText1(),getText2(),getText3()]).then((e)=>{
+            console.log(e.join(""));
+        })
+
+        // Promise.all과 async & await을 사용
+        re()
+        async function re() {
+            const [ge1, ge2, ge3] = await Promise.all([
+                getText1(),
+                getText2(),
+                getText3()
+            ])
+
+            console.log(ge1+ge2+ge3);
+        }
+    </script>
+</body>
+
+</html>
