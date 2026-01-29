@@ -17,14 +17,21 @@
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     // 코드 작성
+                    if(price <= budget){
+                        resolve("구매 가능")
+                    } else {
+                        reject("구매 불가능")
+                    }
                 }, 100);
             });
-        }
+        } 
 
         // 코드 작성
         function callCanPurchase() {
+            canPurchase(productPrices[0], usersBudget[0])
             // canPurchase 호출
         }
+        callCanPurchase()
     </script>
 </body>
 
