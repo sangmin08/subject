@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function findUserByName(name) {
+            const users = [
+                { id: 1, name: 'Alice' },
+                { id: 2, name: 'Bob' },
+                { id: 3, name: 'Charlie' },
+            ];
+            
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 코드 작성
+                    if(users.find(e=>e.name===name).name) {
+                        resolve(users.find(e=>e.name===name))
+                    } else {
+                        reject("아이디가 없습니다")
+                    }
+                }, 1000);
+            });
+        }  
+
+        // findUserByName("Alice")
+        // .then((name)=>{
+        //     console.log(name)
+        // })
+        // .catch((error)=>{
+        //     console.error(error);
+        // })
+    </script>
+</body>
+
+</html>
