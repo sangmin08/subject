@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<input type="file">
 
 <body>
-
+    <input type="file">
+    
     <script>
         const input = document.querySelector("input")
 
@@ -23,10 +23,9 @@
         }
         
         input.addEventListener("change", (e)=>{
-            const reader = new FileReader()
             const file = e.target.files[0]
             const filesize = 1 * 1024 * 1024 
-            console.log(file.size);
+            // console.log(file.size);
             console.log(checkFileSize(file, filesize));
             
         })

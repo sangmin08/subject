@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file">
+
+    <script>
+        const input = document.querySelector("input")
+
+        function getFileMimeType(file) {
+            // 코드 작성
+            return file.type
+        }
+
+        input.addEventListener("change", (e) => {
+            const file = e.target.files[0]
+            // console.log(file.type);
+            console.log(getFileMimeType(file));
+        })
+
+        // // 사용 예시
+        // const imageFile = new File([""], "example.jpg", { type: "image/jpeg" });
+        // console.log(getFileMimeType(imageFile)); // "image/jpeg" 출력
+
+        // const textFile = new File(["Hello World!"], "example.txt", { type: "text/plain" });
+        // console.log(getFileMimeType(textFile)); // "text/plain" 출력
+    </script>
+</body>
+
+</html>
