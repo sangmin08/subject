@@ -11,21 +11,33 @@
 <body>
 
     <script>
+        const input = document.querySelector("input")
+
         function checkFileSize(file, maxSize) {
-            // const input = document.querySelector("input")
-            // input.addEventListener("change", (e)=>{
-            //     console.log(e);
-            // })
             // 코드 작성
-            if (file > )
+            if (file.size > maxSize) {
+                return true
+            } else {
+                return false
+            }
         }
+        
+        input.addEventListener("change", (e)=>{
+            const reader = new FileReader()
+            const file = e.target.files[0]
+            const filesize = 1 * 1024 * 1024 
+            console.log(file.size);
+            console.log(checkFileSize(file, filesize));
+            
+        })
 
-        // 사용 예시
-        const file1 = new File(["Hello World!"], "example.txt", { type: "text/plain" });
-        console.log(checkFileSize(file1, 50)); // true 출력
 
-        const file2 = new File(["This is a very long content"], "example.txt", { type: "text/plain" });
-        console.log(checkFileSize(file2, 10)); // false 출력
+        // // 사용 예시
+        // const file1 = new File(["Hello World!"], "example.txt", { type: "text/plain" });
+        // console.log(checkFileSize(file1, 50)); // true 출력
+
+        // const file2 = new File(["This is a very long content"], "example.txt", { type: "text/plain" });
+        // console.log(checkFileSize(file2, 10)); // false 출력
     </script>
 </body>
 
