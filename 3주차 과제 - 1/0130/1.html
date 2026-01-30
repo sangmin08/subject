@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file">
+    <img src="" alt="" id="pre">
+    <script>
+        const input = document.querySelector("input")
+        const img = document.querySelector("img")
+
+        input.addEventListener("change",(e)=>{
+            const file = e.target.files[0]
+            const reader = new FileReader()
+
+            reader.onload = () => {
+                img.src = reader.result
+            }
+
+            reader.readAsDataURL(file)
+        })
+    </script>
+</body>
+
+</html>
