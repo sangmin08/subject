@@ -15,11 +15,11 @@
 									"user_name" => $_SESSION['user']->name
 								]);
 
-								$mycounts = $pstmt->fetch();
+								$myuser_counts = $pstmt->fetch();
 							?>
 							<p><?=$_SESSION['user']->email?></p>
                             <p><?=$_SESSION['user']->name?></p>
-							<p>등록한 글의 개수 : <?=$mycounts->post_count?>개</p>
+							<p>등록한 글의 개수 : <?=$myuser_counts->post_count?>개</p>
                             <a href="/users/action.php?mode=logout">로그아웃</a>
                         <?php else : ?>
                             <form action="/users/action.php" class="form-horizontal" method="POST">
@@ -53,15 +53,29 @@
 						
 				</div>
 
+				<?php 
+					$sql = "SELECT category, COUNT(*) AS category_count FROM boards GROUP BY category";
+					
+					$pstmt = $db->prepare($sql);
+					$pstmt->execute();
+
+					$category_counts = $pstmt->fetchall();
+
+					$map = [];
+					foreach ($category_counts as $count) {
+						$map[$count->category] = $count->category_count;
+					}
+				?>
+
 				<div class="categories">
 					<h3>Categories</h3>
 					<ul>
-						<li>전체보기 <span class="badge">128</span></li>
-						<li>life <span class="badge">12</span></li>
-						<li>art <span class="badge">32</span></li>
-						<li>fashion <span class="badge">50</span></li>
-						<li>technics <span class="badge">22</span></li>
-						<li>etcs <span class="badge">9</span></li>
+						<li>전체보기 <span class="badge"><?=$db->query("SELECT COUNT(*) FROM boards")->fetchColumn();?></span></li>
+						<li>life <span class="badge"><?=$map['life'] ?? 0?></span></li>
+						<li>art <span class="badge"><?=$map['art'] ?? 0?></span></li>
+						<li>fashion <span class="badge"><?=$map['fashion'] ?? 0?></span></li>
+						<li>technics <span class="badge"><?=$map['technics'] ?? 0?></span></li>
+						<li>etcs <span class="badge"><?=$map['etcs'] ?? 0?></span></li>
 					</ul>
 				</div>
 				
@@ -71,13 +85,13 @@
 					$pstmt = $db->prepare($sql);
 					$pstmt->execute();
 
-					$counts = $pstmt->fetchAll();
+					$user_counts = $pstmt->fetchAll();
 				?>
 				
 				<div class="authors">
 					<h3>Authors</h3>
 					<ul>
-						<?php foreach ($counts as $count) :?>
+						<?php foreach ($user_counts as $count) :?>
 						<li><?=$count->user_name?> <span class="badge"><?=$count->post_count?></span></li>
 						<?php endforeach; ?>
 					</ul>

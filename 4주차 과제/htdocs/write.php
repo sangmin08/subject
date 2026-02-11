@@ -12,7 +12,7 @@
 					</div>
 					<div class="panel-body">
 
-						<form action="/boards/action.php" class="form-horizontal" method="POST">
+						<form action="/boards/action.php" class="form-horizontal" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="mode" value="write">
 
 							<div class="form-group">
@@ -42,19 +42,19 @@
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="title" id="title" placeholder="글 제목">
+									<input type="text" class="form-control" name="title" id="title" placeholder="글 제목" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword3" class="col-sm-2 control-label">글본문</label>
 								<div class="col-sm-10">
-									<textarea class="form-control" rows="8" name="comment" id="comment"></textarea>
+									<textarea class="form-control" rows="8" name="comment" id="comment" required></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword3" class="col-sm-2 control-label">이미지</label>
 								<div class="col-sm-10">
-									<input type="file" class="form-control" id="upimg">
+									<input type="file" class="form-control" name="upimg" id="upimg">
 								</div>
 							</div>													
 							<div class="form-group">

@@ -38,7 +38,7 @@
 								<div class="col-sm-10">
 									<input type="password" class="form-control" name="userpass2" id="userpass2" placeholder="비밀번호 확인 " required>
 								</div>
-							</div>																				
+							</div>																	
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button type="submit" class="btn btn-default">회원가입</button>

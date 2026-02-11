@@ -1,4 +1,14 @@
 <?php require_once "header.php" ?>
+
+	<?php
+		$boardId = $_GET['id'];
+
+		$sql = "SELECT * FROM boards WHERE board_id = :id";
+		$pstmt = $db->prepare($sql);
+		$pstmt->execute(['id'=>$boardId]);
+
+		$board = $pstmt->fetch();
+	?>
     <div class="row">
 			<div class="col-md-9">
 
@@ -9,17 +19,19 @@
 					</div>
 					<div class="panel-body">
 
-						<form class="form-horizontal">
+						<form action="/boards/action.php" class="form-horizontal"method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="board_id" value="<?=$board->board_id?>">
+                            <input type="hidden" name="mode" value="update">
 							<div class="form-group">
 								<label for="userid" class="col-sm-2 control-label">Email</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control" name="userid" id="userid" placeholder="hongkildong@hongkildong.com" readonly>
+									<input type="email" class="form-control" name="userid" id="userid" value="<?=$_SESSION['user']->email?>" readonly>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="username" class="col-sm-2 control-label">작성자</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" name="username" id="username" placeholder="홍길동" readonly>
+									<input type="text" class="form-control" name="username" id="username" value="<?=$_SESSION['user']->name?>" readonly>
 								</div>
 							</div>							
 							<div class="form-group">
@@ -37,22 +49,13 @@
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control" name="title" id="title" placeholder="글 제목" value="Lorem ipsum dolor sit amet, consectetur adipisicing elit">
+									<input type="text" class="form-control" name="title" id="title" placeholder="글 제목" value="<?=$board->title?>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword3" class="col-sm-2 control-label">글본문</label>
 								<div class="col-sm-10">
-									<textarea class="form-control" rows="8" name="comment" id="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.	
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.	
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.	
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.	
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.	
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eveniet iure quam excepturi, necessitatibus aliquam accusamus illo ea veniam in quod laborum rerum, vel ut distinctio possimus quibusdam animi nostrum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ex omnis ut, adipisci vel. Atque mollitia pariatur corporis non at error beatae aliquam praesentium aliquid autem. Omnis, aperiam pariatur saepe.</textarea>
+									<textarea class="form-control" rows="8" name="comment" id="comment"><?=$board->text?></textarea>
 								</div>
 							</div>
 							<div class="form-group">

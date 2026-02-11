@@ -1,7 +1,7 @@
 <?php   
     require_once "../db.php";
     $mode = $_POST['mode'] ?? $_GET['mode'] ?? "";
-    $boardId = (int)($_GET['id'] ?? $_POST['id'] ?? 0);
+    $boardId = (int)($_GET['board_id'] ?? $_POST['board_id'] ?? 0);
     
     
     switch ($mode) {
@@ -14,7 +14,7 @@
                 "text" => $_POST['comment']
             ]);
 
-            header("Location: ../view.php");
+            header("Location: ../view.php?id=" . $boardId);
             exit;
             break;
     
@@ -24,7 +24,7 @@
                 "id" => $_GET['id']
             ]);
 
-            header("Location: ../view.php");
+            header("Location: ../view.php?id=" . $boardId);
             exit;
 
             break;

@@ -22,6 +22,7 @@
 					</div>
 					<div class="panel-body">
 						<p>
+							<img src="" alt="">
 							<?=$board->text?>	
 						</p>
 					</div>
@@ -30,10 +31,10 @@
 							<div class="col-md-6"><strong>[<?=$board->category?>]</strong></span>&nbsp;&nbsp;<span class="writer"><?=$board->user_name?></span>&nbsp;&nbsp;<span class="date"><?=$board->date?></span>&nbsp;&nbsp;<span class="commentcount">댓글수 <span class="badge">8</span></span></div>
 							<div class="col-md-6 btns">
 							<?php if (isset($_SESSION['user']) && $_SESSION['user']->name === $board->user_name): ?>
-								<a href="modify.php" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>수정</a>
+								<a href="modify.php?id=<?=$board->board_id?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>수정</a>
 								<a href="/boards/action.php?mode=delete&id=<?=$board->board_id?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> 삭제</a>
 								<?php endif; ?>
-								<a href="view.php" class="btn 	btn-primary"><span class="glyphicon glyphicon-zoom-in"></span> 더보기</a>
+								<a href="view.php?id=<?=$board->board_id ?>" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span> 더보기</a>
 							</div>
 						</div>
 					</div>
