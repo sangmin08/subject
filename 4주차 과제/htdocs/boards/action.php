@@ -31,13 +31,13 @@
 
             break;
         case 'update':
-
+            $filename = $_FILES['upimg']['name'];
             $pstmt = $db->prepare("UPDATE boards set category=:category, title=:title, text=:text, img=:img WHERE board_id = :id");
             $pstmt->execute([
                 "category" => $_POST['category'],
                 "title" => $_POST['title'],
                 "text" => $_POST['comment'],
-                "img" => $_FILES['upimg']['name'],
+                "img" => $filename,
                 "id" => $boardId
             ]);
 

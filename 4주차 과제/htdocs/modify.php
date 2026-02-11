@@ -61,7 +61,7 @@
 							<div class="form-group">
 								<label for="inputPassword3" class="col-sm-2 control-label">이미지</label>
 								<div class="col-sm-10">
-									<input type="file" class="form-control" id="upimg"> sample1.jpg
+									<input type="file" class="form-control" name="upimg" id="upimg"> sample1.jpg
 								</div>
 							</div>													
 							<div class="form-group">

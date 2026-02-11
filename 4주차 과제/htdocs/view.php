@@ -28,8 +28,21 @@
 						</p>
 					</div>
 					<div class="panel-footer">
+					<?php
+						$sql = "SELECT board_id , COUNT(*) comment_count FROM comments GROUP BY board_id";
+						
+						$pstmt = $db->prepare($sql);
+						$pstmt->execute();
+
+						$com_counts = $pstmt->fetchall();
+
+						$commap = [];
+						foreach ($com_counts as $count) {
+							$commap[$count->board_id] = $count->comment_count;
+						}
+					?>
 						<div class="row">
-							<div class="col-md-6"><span class="category"><strong>[<?=$board->category?>]</strong></span>&nbsp;&nbsp;<span class="writer"><?=$board->user_name?></span>&nbsp;&nbsp;<span class="date"><?=$board->date?></span>&nbsp;&nbsp;<span class="commentcount">댓글수 <span class="badge">3</span></span></div>
+							<div class="col-md-6"><span class="category"><strong>[<?=$board->category?>]</strong></span>&nbsp;&nbsp;<span class="writer"><?=$board->user_name?></span>&nbsp;&nbsp;<span class="date"><?=$board->date?></span>&nbsp;&nbsp;<span class="commentcount">댓글수 <span class="badge"><?=$commap[$board->board_id] ?? 0?></span></span></div>
 							<div class="col-md-6 btns">
 								<?php if (isset($_SESSION['user']) && $_SESSION['user']->name === $board->user_name): ?>
 								<a href="modify.php?id=<?=$board->board_id?>" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> 수정</a>
