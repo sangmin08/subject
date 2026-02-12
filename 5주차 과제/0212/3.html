@@ -9,6 +9,9 @@
             height: 100vh;
             margin: 0;
         }
+        .parent {
+            height: 100%;
+        }
         .box{
             position: absolute;
             width: 100px; 
@@ -18,12 +21,13 @@
     </style>
 </head>
 <body>
-    <div style="position: relative;">
+    <div class="parent" style="position: relative;">
         <div class="box">box</div>
     </div>
 
     <script>
         const div = document.querySelector('.box');
+        const parent = document.querySelector('.parent')
         let x = 0;
         let y = 0;
 
@@ -43,6 +47,8 @@
                     break;
             }
             
+            x = Math.max(0, Math.min(x, parent.clientWidth - div.offsetWidth));
+            y = Math.max(0, Math.min(y, parent.clientHeight - div.offsetHeight));
 
             div.style.left = x + "px";
             div.style.top = y + "px";
