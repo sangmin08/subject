@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>To-Do 리스트</h1>
+    <input type="text" placeholder="할 일을 입력하세요">
+    <button class="addbtn">추가</button>
+    <div class="todo-list">
+        
+    </div>
+
+    <script>
+        const addbtn = document.querySelector(".addbtn");
+        
+        addbtn.addEventListener("click", function(){
+            const input = document.querySelector("input");
+            document.querySelector(".todo-list").insertAdjacentHTML
+            ("beforeend",`
+                <div>
+                    ${input.value}
+                    <button class="removebtn">삭제</botton>
+                </div>
+            `)
+        })
+
+        document.querySelector(".todo-list").addEventListener("click",(e)=>{
+            const removebtn = e.target.classList.contains("removebtn");
+
+            if(removebtn){
+                document.querySelector(".todo-list").removeChild(e.target.parentNode)
+            }
+        })
+
+
+    </script>
+</body>
+</html>
