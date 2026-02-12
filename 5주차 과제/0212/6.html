@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropbox">
+        <p>이미지를 여기에 드래그하세요</p>
+    </div>
+    <button>리셋</button>
+    <script>
+        const dropbox = document.querySelector(".dropbox")
+
+        dropbox.addEventListener("dragover",(e)=>{
+            e.preventDefault();
+        })
+
+        dropbox.addEventListener("drop",(e)=>{
+            e.preventDefault();
+
+            const file = e.dataTransfer.files[0];
+
+            const reader = new FileReader();
+
+            reader.onload = function(){   
+                dropbox.innerHTML = `<img src="${reader.result}" alt="">`
+            }
+                
+            reader.readAsDataURL(file)
+        })
+
+        const reset = document.querySelector("button")
+        reset.addEventListener("click",()=>{
+            dropbox.innerHTML = `<p>이미지를 여기에 드래그하세요</p>`
+        })
+    </script>
+</body>
+</html>

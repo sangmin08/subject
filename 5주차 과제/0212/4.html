@@ -14,7 +14,7 @@
         const year = date.getHours()
         const month = date.getMinutes()
         const days = date.getSeconds()
-        p.textContent = `${year}:${month}:${days}`
+        p.innerHTML = `${year}:${month}:${days}`
         
         
         setInterval(() => {
@@ -22,7 +22,7 @@
             const year = date.getHours()
             const month = date.getMinutes()
             const days = date.getSeconds()
-            p.textContent = `${year}:${month}:${days}`
+            p.innerHTML = `${year}:${month}:${days}`
         }, 1000);
     </script>
 </body>
