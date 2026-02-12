@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="pw">비밀번호 </label>
+    <input type="password">
+
+    <script>
+        const input = document.querySelector("input");
+        let yellow = /([A-Z0-9])/;
+        
+        input.addEventListener("input", function(){
+            let pw = input.value;
+            
+            if (pw.length < 6) {
+                input.style.border = "5px solid red";
+            } 
+            if(6 <= pw.length && yellow.test(pw)) {
+                input.style.border = "5px solid yellow";
+            }
+            if(8 <= pw.length && /([A-Z])/.test(pw) && /([0-9])/.test(pw) && /([!@#$%^&*()])/.test(pw)) {
+                input.style.border = "5px solid green";
+            }
+            
+        })
+        // setInterval(() => {
+        //     console.log(input.value.length)
+        // }, 1000);
+    </script>
+</body>
+</html>
