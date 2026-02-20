@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="success">성공</button>
+    <button class="fail">실패</button>
+    <div class="text-list"></div>
+
+    <script>
+        const sbtn = document.querySelector(".success")
+        const fbtn = document.querySelector(".fail")
+        const list = document.querySelector(".text-list")
+
+        sbtn.addEventListener("click" , (e)=>{
+            const msg = document.createElement("p");
+            msg.textContent  = '성공하였습니다'
+            
+            list.appendChild(msg)
+
+            setTimeout(()=>{
+                msg.remove();
+            },5000)
+        })
+
+        fbtn.addEventListener("click" , (e)=>{
+            const msg = document.createElement("p");
+            msg.textContent  = '실패하였습니다'
+            list.appendChild(msg)
+
+            setTimeout(()=>{
+                msg.remove();
+            },5000)
+        })
+
+        list.addEventListener("click", (e)=>{
+            if(e.target.tagName === "P") {e.target.remove()}
+        })
+        
+    </script>
+</body>
+</html>
