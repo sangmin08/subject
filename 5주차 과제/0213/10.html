@@ -9,8 +9,6 @@
             background-color: #eee;
         }
         canvas {
-            width: 400px;
-            height: 200px;
             background-color: #fff;
             border: 2px solid #000;
             border-radius: 10px;
@@ -19,8 +17,51 @@
 </head>
 <body>
     <h2>✍️ 전자서명</h2>
-    <canvas></canvas>
-    <button>지우기</button>
-    <button>저장</button>
+    <canvas style="width: 400; height: 200;" class="canvasBox"></canvas>
+    <button class="clear">지우기</button>
+    <button class="download">저장</button>
+    <script>
+        const canvas = document.querySelector(".canvasBox");
+        const ctx = canvas.getContext("2d")
+        const clear = document.querySelector(".clear")
+        const down = document.querySelector(".download")
+
+        let painting = false;
+
+        function stop() {
+            painting = false;
+        }
+        function start() {
+            painting = true;
+        }
+
+        function mouse(e){
+            var x1 = e.offsetX;
+            var y1 = e.offsetY;
+
+            if(!painting){
+                ctx.beginPath();
+                ctx.moveTo(x1,y1);
+            }else{
+                ctx.lineTo(x1,y1);
+                ctx.stroke();
+            }
+        }
+
+        canvas.addEventListener("mousemove",mouse);
+        canvas.addEventListener("mousedown",start);
+        canvas.addEventListener("mouseup",stop); 
+        canvas.addEventListener("mouseover",stop)
+
+        clear.addEventListener("click",()=>{
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+        })
+        down.addEventListener("click",()=>{
+            const a = document.createElement("a")
+            a.href = canvas.toDataURL();
+            a.download = "painting.png"
+            a.click()
+        })
+    </script>
 </body>
 </html>
