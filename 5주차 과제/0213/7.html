@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input class="box" type="text" maxlength="1">
+    <input class="box" type="text" maxlength="1">
+    <input class="box" type="text" maxlength="1">
+    <input class="box" type="text" maxlength="1">
+    <input class="box" type="text" maxlength="1">
+    <input class="box" type="text" maxlength="1">
+    <button style="display: none;">전송하기</button>
+
+    <script>
+        const boxs = document.querySelectorAll(".box")
+        const smit = document.querySelector("button")
+        let allFilled = true;
+
+        const updateButton = () => {
+            const allFilled = [...boxs].every(b => b.value.trim() !== "");
+            if(allFilled){   
+                smit.style.display = "block"
+            } else {
+                smit.style.display = "none";
+            }
+        };
+
+        boxs.forEach((box, idx) => {
+
+            box.addEventListener("input", (e) => {
+                if (/([0-9])/.test(e.target.value) === true) {
+                    if (e.target.value.length === 1) {
+                        boxs[idx + 1]?.focus();
+                        console.log("숫자 입력됨");
+                        updateButton();
+                    }
+                } else {
+                    e.target.value = "";
+                    console.log("다른것 입력됨");
+                }
+            })
+
+            box.addEventListener("keydown", (e) => {
+                if (e.key === "Backspace") {
+                    e.target.value = "";
+                    boxs[idx - 1]?.focus();
+                    updateButton();
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
