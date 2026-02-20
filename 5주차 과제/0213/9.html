@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0 30px;
+            background-color: #eee;
+        }
+        h1 {
+            text-align: center;
+        }
+        .box{
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            line-height: 10px;
+            border-radius: 10px;
+        }
+        .favorites {
+            display: flex;
+            align-items: center;
+        }
+        .favorites > input {
+            display: none;
+        }
+        .favorites > label {
+            font-size: 30px;
+        }
+        .favorites > label:hover {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>즐겨찾기 목록</h1>
+    <div class="text-list"></div>
+
+    <script>
+        const list = document.querySelector(".text-list");
+        const STORAGE_KEY = "favorites";
+
+        const loadFavorites = () => {
+            try{
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? {})
+            } catch {
+                return {}
+            }
+        }
+
+        const saveFavorites = (fav) => {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(fav));
+        }
+
+        async function loadDate() {
+            try {
+                const res = await fetch("data.json");
+                const data = await res.json();
+
+                data.forEach((item) => {
+                    list.insertAdjacentHTML("beforeend", `
+                        <div class="box">
+                            <div class="text">
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                            </div>
+                            <div class="favorites">
+                                <input type="checkbox" id="favorite-${item.id}" >
+                                <label for="favorite-${item.id}">☆</label>
+                            </div> 
+                        </div>
+                    `)
+                });
+                console.log(data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        loadDate();
+    </script>
+</body>
+</html>
