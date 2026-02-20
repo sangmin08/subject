@@ -14,11 +14,75 @@
 
     <script>
         const timer = document.querySelector(".timer")
-        const stop = document.querySelector(".stop")
+        const pause = document.querySelector(".stop")
         const reset = document.querySelector(".reset")
         const start = document.querySelector(".start")
-        
+        let time = 0
+        let isRunning = false
+        let intervalId = null
 
+        start.addEventListener("click",()=>{
+            if(!isRunning){
+                startTimer()
+            }
+        })
+
+        pause.addEventListener("click",()=>{
+            if(isRunning){
+                pauseTimer()
+            } else {
+                keepTimer()
+            }
+        })
+
+        reset.addEventListener("click",()=>{
+            clearInterval(intervalId)
+            intervalId = null
+            isRunning = false
+            time = 0
+
+            start.style.display = "inline-block"
+            pause.style.display = "none"
+            pause.textContent = "중지"
+            timer.textContent = "00:00:000"
+        })
+        
+        function startTimer(){
+            if (intervalId) return
+            isRunning = true
+            start.style.display = "none"
+            pause.style.display = "inline-block"
+            intervalId = setInterval(onInterval, 10)
+        }
+
+        function pauseTimer(){
+            isRunning = false
+            pause.textContent = "계속"
+            clearInterval(intervalId)
+            intervalId = null
+        }
+
+        function keepTimer(){
+            if(intervalId)return
+            isRunning = true
+            pause.textContent = "중지"
+            intervalId = setInterval(onInterval, 10)
+        }
+
+        function onInterval(){
+            time += 10
+            update()
+        }
+
+        function update(){
+            const minute = Math.floor(time / 60000)
+            const second = Math.floor((time%60000)/1000)
+            const ms = time%1000
+
+            timer.textContent = String(minute).padStart(2,"0")+":"
+            +String(second).padStart(2,"0")+":"
+            +String(ms).padStart(3,"0")
+        }
     </script>
 </body>
 </html>
