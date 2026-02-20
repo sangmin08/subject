@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video src="test-video.mp4"></video>
+    <p></p>
+    <button class="play">재생</button>
+    <button class="rewind">10초 되감기</button>
+    <button class="fast">10초 빨리감기</button>
+    <button class="sound">소리 음소거</button>
+    
+    <script>
+        const video = document.querySelector("video")
+        const p = document.querySelector("p")
+        video.addEventListener("loadedmetadata",()=>{
+        })
+        video.addEventListener("timeupdate", () => {
+            const current = Math.floor(video.currentTime);
+            const min = Math.floor(current / 60);
+            const sec = current % 60;
+            const total = Math.floor(video.duration);
+            const min1 = Math.floor(total/60)
+            const sec1 = total%60
+
+            p.textContent = (`${min}:${String(sec).padStart(2, "0")} : ${min1}:${String(sec1).padStart(2, "0")}`) ;
+        });
+
+        document.querySelector(".play").addEventListener("click",(e)=>{
+            if(video.paused) {
+                video.play()
+                e.target.textContent = "일시정지"
+            } else {
+                video.pause()
+                e.target.textContent = "재생"
+            }
+        })
+
+        document.querySelector(".rewind").addEventListener("click",(e)=>{
+            video.currentTime -= 10
+        })
+        document.querySelector(".fast").addEventListener("click",(e)=>{
+            video.currentTime += 10
+            
+        })
+        document.querySelector(".sound").addEventListener("click",(e)=>{
+            if(video.muted){
+                video.muted = false
+                e.target.textContent = "소리 음소거"
+            }else{
+                video.muted = true
+                e.target.textContent = "음소거 해제"
+            }
+        })
+    </script>
+</body>
+</html>
