@@ -90,7 +90,7 @@
                 });
 
                 list.addEventListener("change", (e)=>{
-                    const key = e.target.id
+                    const key = e.target.id.replace("favorite-","")
                     const current = loadFavorites();
                     current[key] = e.target.checked;
                     saveFavorites(current);
