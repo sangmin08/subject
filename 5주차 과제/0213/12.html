@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            width: 400px;
+            height: 300px;
+        }
+
+        .img>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>이미지 필터 편집기</h1>
+    <div class="btns">
+        <button class="gray">흑백</button>
+        <button class="sepia">세피아</button>
+        <button class="invert">반전 효과</button>
+        <button class="original">원본</button>
+    </div>
+    <input type="file">
+    <div class="img">
+        <img src="" alt="" id="pre">
+    </div>
+    <script>
+        const input = document.querySelector("input")
+        const img = document.querySelector("img")
+
+        input.addEventListener("change", (e) => {
+            const file = e.target.files[0]
+            const reader = new FileReader()
+            reader.onload = () => {
+                img.src = reader.result
+            }
+
+            reader.readAsDataURL(file)
+        })
+
+        document.querySelector(".gray").addEventListener("click",()=>{
+            img.style.filter = "grayscale(1)"
+        })
+        document.querySelector(".sepia").addEventListener("click",()=>{
+            img.style.filter = "sepia(1)"
+        })
+        document.querySelector(".invert").addEventListener("click",()=>{
+            img.style.filter = "invert(1)"
+        })
+        document.querySelector(".original").addEventListener("click",()=>{
+            img.style.filter = "none"
+        })
+    </script>
+</body>
+
+</html>
