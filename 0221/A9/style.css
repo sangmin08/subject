@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/A9/images/background.png");
+    background-size: cover;
+}
+
+.slider {
+    width: 1920px;
+    position: relative;
+    
+}
+
+.slide {
+    width: 5760px;
+    position: absolute;
+}
+
+.item {
+    width: 500px;
+}
+
+.item img {
+    width: 100%;
+}
+
+.item h3,i {
+    color: #fff;
+}
+
+.item p {
+    color: darkgrey;
+}
