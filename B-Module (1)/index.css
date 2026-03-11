@@ -9,30 +9,184 @@ a {
 }
 
 header {
-    padding: 30px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     background-color: #eee;
 }
 
-header a {
-    padding: 10px;
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.navi {
-    display: flex;
-    gap: 100px;
+.logo img{
+    width: 100px;
 }
+
+/*  */
+    .gnb {
+        display: inline-block;
+        border-radius: 8px;
+    }
+
+    .main-menu {
+        display: flex;
+        gap: 15px;
+        list-style: none;
+    }
+
+    /* 개별 메뉴 아이템 */
+    .menu-item {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .menu-label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-item:hover .menu-label {
+        background-color: #aaa;
+        color: #fff;
+    }
+
+    .menu-item:hover > div > a{
+        color: #eee;
+    }
+
+    /* 투명 버튼 */
+    .trigger {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        border: none;
+        z-index: 10;
+    }
+
+    .icon {
+        position: relative;
+        width: 12px;
+        height: 12px;
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .icon::before,
+    .icon::after {
+        content: '';
+        position: absolute;
+        background-color: currentColor;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .icon::before {
+        width: 12px;
+        height: 2px;
+    }
+
+    /* 가로선 (-) */
+    .icon::after {
+        width: 2px;
+        height: 12px;
+    }
+
+    /* 클릭 시 서브메뉴 애니메이션 및 [+] -> [-] 아이콘 회전 변경 */
+    .menu-item:focus-within .icon {
+        transform: rotate(180deg);
+    }
+
+    .menu-item:focus-within .icon::after {
+        transform: translate(-50%, -50%) scaleY(0);
+        opacity: 0;
+        /* 세로선이 사라지면서 - 모양만 남도록 변경 */
+    }
+
+    /* 서브메뉴 기본 상태 */
+    .submenu {
+        position: absolute;
+        top: 100%;
+
+        left: 0;
+        min-width: 180px;
+        background: #ffffff;
+        border-radius: 6px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+        list-style: none;
+        z-index: 20;
+
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: visibility 0.3s, opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* 메인메뉴 클릭 시 서브메뉴 애니메이션 */
+    .menu-item:focus-within .submenu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .submenu-item a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #aaa;
+        font-size: 14px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .submenu-item a:hover {
+        background-color: #f3f4f6;
+        color: #000;
+    }
+
+    /*
+    * 마우스가 메뉴 영역(.menu-item) 전체에서 벗어나면 강제로 화면에서 지워버리기
+    * 화면에서 사라지는 순간(display: none) 브라우저는 해당 요소의 Focus 상태를 강제 해제하는 트릭
+    */
+    .menu-item:not(:hover) .trigger,
+    .menu-item:not(:hover) .submenu {
+        display: none !important;
+    }
+/*  */
+
 
 .login {
     display: flex;
     gap: 30px;
+    margin: 16px 0;
+}
+
+.login a {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #000;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .login a:hover {
-    background-color: #aaa;
     color: #fff;
-    border-radius: 30px;
+    background-color: #aaa;
 }
 
 #sign-in {
@@ -47,6 +201,7 @@ header a {
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+    z-index: 999;
 }
 
 #sign-in>form {
@@ -103,6 +258,7 @@ header a {
     top: 5%;
     left: 5%;
     gap: 30px;
+    z-index: 999;
 }
 
 .popup > div > div {
@@ -149,6 +305,106 @@ header a {
     from {opacity: 0;}
     to {opacity: 1;}
 }
+
+
+/*  */
+    .slider-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slide-wrapper {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: slide-infinite 9s infinite linear;
+        }
+
+        .slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(50%);
+        }
+
+        .slide-text {
+            position: absolute;
+            top: 0;
+            color: #fff;
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 진행 막대 애니메이션 */
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background: #ff0000;
+            animation: progress-fill 3s infinite linear;
+            animation-delay: -0.75s;
+        }
+
+        /* 마우스 오버 시 전체 일시 정지 */
+        .slider-container:hover .slide-wrapper,
+        .slider-container:hover .progress-bar {
+            animation-play-state: paused;
+        }
+
+
+        /* 멈추는 시간 25% => 2.25초
+        이동하는 시간 8% = 약 0.75초 */
+        @keyframes slide-infinite {
+            0%,
+            25% {
+                transform: translateX(0);
+            }
+
+            /* 1번 대기 */
+            33.33%,
+            58.33% {
+                transform: translateX(-25%);
+            }
+
+            /* 2번 대기 (3초에 딱 도착) */
+            66.66%,
+            91.66% {
+                transform: translateX(-50%);
+            }
+
+            /* 3번 대기 (6초에 딱 도착) */
+            100% {
+                transform: translateX(-75%);
+            }
+
+            /* 1번복제본 (9초에 딱 도착) */
+        }
+
+        @keyframes progress-fill {
+            0%, 25% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+/*  */
+
 
 section {
 height: 600px;
