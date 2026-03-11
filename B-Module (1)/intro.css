@@ -1,0 +1,206 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eee;
+}
+
+header a {
+    padding: 10px;
+}
+
+.navi {
+    display: flex;
+    gap: 100px;
+}
+
+.login {
+    display: flex;
+    gap: 30px;
+}
+
+.login a:hover {
+    background-color: #aaa;
+    color: #fff;
+    border-radius: 30px;
+}
+
+#sign-in {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+#sign-in>form {
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    position: relative;
+
+}
+
+#sign-in input {
+    width: 250px;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+}
+
+#sign-in button {
+    width: 280px;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#sign-in button:hover {
+    cursor: pointer;
+    background-color: #bbb;
+}
+
+
+#sign-in:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.cancel {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    text-decoration: none;
+    color: #000;
+}
+
+.back {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("images/images\ \(3\).jpg");
+    background-position: center;
+    color: #fff;
+}
+
+.back > div {
+    margin: auto;
+    width: 1000px;
+    left: 10%;
+    top: 10%;
+    font-size: 15px;
+}
+
+.history{
+    width:800px;
+    margin:120px auto;
+}
+
+.history h2{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:60px;
+    font-weight:700;
+}
+
+.item{
+    display:flex;
+    align-items:flex-start;
+    padding:28px 0;
+    border-top:1px solid #ddd;
+}
+
+.item:last-child{
+    border-bottom:1px solid #ddd;
+}
+
+.year{
+    width:150px;
+    font-size:26px;
+    font-weight:600;
+    color:#222;
+    flex-shrink:0;
+}
+
+.text{
+    flex:1;
+    max-width:600px;
+    line-height:1.9;
+    color:#444;
+    font-size:15px;
+}
+
+footer {
+    padding: 60px;
+    background-color: #000;
+    color: #aaa;
+}
+
+footer hr {
+    background: #222;
+    height: 1px;
+    border: 0;
+}
+
+.top-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.top-footer img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.top-footer .left {
+    line-height: 10px;
+}
+
+.top-footer .right div{
+    display: flex;
+    gap: 20px;
+}
+
+.top-footer .circle {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #aaa;
+    border-radius: 40px;
+}
+
+.bottom-footer {
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -1,0 +1,269 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eee;
+}
+
+header a {
+    padding: 10px;
+}
+
+.navi {
+    display: flex;
+    gap: 100px;
+}
+
+.login {
+    display: flex;
+    gap: 30px;
+}
+
+.login a:hover {
+    background-color: #aaa;
+    color: #fff;
+    border-radius: 30px;
+}
+
+#sign-in {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+#sign-in>form {
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    position: relative;
+
+}
+
+#sign-in input {
+    width: 250px;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+}
+
+#sign-in button {
+    width: 280px;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
+#sign-in button:hover {
+    cursor: pointer;
+    background-color: #bbb;
+}
+
+
+#sign-in:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.cancel {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    text-decoration: none;
+    color: #000;
+}
+
+.popup {
+    position: fixed;
+    display: flex;
+    top: 5%;
+    left: 5%;
+    gap: 30px;
+}
+
+.popup > div > div {
+    width: 350px;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid #aaa;
+    animation: fadeIn 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.popup input {
+    display: none;
+}
+
+.popup label {
+    width: 100%;
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.popup .img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.popup img {
+    width: 100%;
+}
+
+.popup label:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.popup > div > input:checked ~ div{
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+section {
+height: 600px;
+}
+
+.notice {
+    margin: 50px auto;
+    width: 1000px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.tag {
+    display: flex;
+}
+
+.tag label {
+    padding: 15px 25px;
+    border: 1px solid #aaa;
+    border-bottom: none;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.tag label:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
+.news {
+    width: 1000px;
+    border-top: 1px solid #aaa;
+}
+
+.news > div {
+    display: none;
+    width: 100%;
+    height: 300px;
+}
+
+.new {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border-bottom: 1px solid #aaa;
+}
+
+.new p:first-child {
+    font-size: 15px;
+}
+
+.new p:last-child {
+    font-size: 14px;
+    color: #666;
+}
+
+#news1:checked ~ .news .news1,
+#news2:checked ~ .news .news2,
+#news3:checked ~ .news .news3 {
+    display: block;
+}
+
+#news1:checked ~ .tag label[for="news1"],
+#news2:checked ~ .tag label[for="news2"],
+#news3:checked ~ .tag label[for="news3"] {
+    background-color: #666;
+    color: #fff;
+}
+
+
+
+footer {
+    padding: 60px;
+    background-color: #000;
+    color: #aaa;
+}
+
+footer hr {
+    background: #222;
+    height: 1px;
+    border: 0;
+}
+
+.top-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.top-footer img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.top-footer .left {
+    line-height: 10px;
+}
+
+.top-footer .right div{
+    display: flex;
+    gap: 20px;
+}
+
+.top-footer .circle {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #aaa;
+    border-radius: 40px;
+}
+
+.bottom-footer {
+    display: flex;
+    justify-content: space-between;
+}
