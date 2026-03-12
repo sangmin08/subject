@@ -180,6 +180,9 @@ header {
     transition: background-color 0.2s, color 0.2s;
 }
 
+.login a:first-child {
+}
+
 .login a:hover {
     color: #fff;
     background-color: #1f3a5f;
@@ -260,14 +263,20 @@ header {
     z-index: 999;
 }
 
+.popup h1{
+    padding: 10px 0;
+    margin: 0;
+}
+
 .popup>div>div {
+    box-shadow: 0 0 5px;
     width: 350px;
-    height: 100%;
     padding: 20px;
     border: 1px solid #d9e0e8;
     animation: fadeIn 0.3s ease-in-out;
     background-color: #fffdf8;
     color: #243447;
+    border-radius: 10px;
 }
 
 .popup input {
@@ -405,16 +414,21 @@ header {
 
 /*  */
 
-.notice {
-    text-align: center;
-    margin: 50px auto;
+section {
+    margin: auto;
     width: 1200px;
+}
+
+.notice {
+    margin: 50px auto;
+    width: 100%;
     height: 600px;
 }
 
 h1 {
     border-bottom: 2px solid #243447;
     padding: 30px;
+    text-align: left;
 }
 
 input[type="radio"] {
@@ -496,9 +510,9 @@ input[type="radio"] {
 
 .program-section {
     width: 1200px;
-    text-align: center;
     color: #243447;
     margin: auto;
+    text-align: center;
 }
 
 .program-container {
@@ -541,10 +555,9 @@ input[type="radio"] {
     bottom: 10%;
     left: 0;
     right: 0;
-    text-align: center;
-    background: rgba(31, 58, 95, 0.75);
+    background: rgba(31, 58, 95, 0.97);
     color: #fff;
-    padding: 10px 0;
+    padding: 10px 10px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -579,9 +592,13 @@ input[type="radio"] {
     background: #fffdf8;
     padding: 20px;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
     color: #243447;
+}
+
+.modal-content img {
+    width: 600px;
 }
 
 #modal-1:checked~.modal-overlay[data-modal="1"],
@@ -606,6 +623,326 @@ input[type="radio"] {
     text-decoration: underline;
 }
 
+/*  */
+
+
+/*  */
+
+        .calendar-grid {
+            height: 800px;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .calendar-wrapper > label {
+            padding: 10px 15px;
+            border: 1px solid #000;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .calendar-wrapper > input:checked + label{
+            background-color: #1f3a5f;
+            color: #fff;
+        }
+        .calendar-grid > span {
+            border-bottom: 1px solid #000;
+            height: 30%;
+            text-align: center;
+        }
+        
+        .e2026m4{
+            display:none;
+        }
+
+        #y26:checked ~ #m4:checked ~ .calendar-grid .e2026m4{
+            display:block;
+        }
+
+        /* [연도 오프셋] 1월 1일 요일값 (1:일, 2:월, 3:화, 4:수, 5:목, 6:금, 7:토) */
+        #y25:checked~.calendar-grid {
+            --y: 4;
+        }
+
+        #y26:checked~.calendar-grid {
+            --y: 5;
+        }
+
+        #y27:checked~.calendar-grid {
+            --y: 6;
+        }
+
+        /* [월 오프셋] 1월 1일로부터 누적된 일수 */
+        #m1:checked~.calendar-grid {
+            --m: 0;
+        }
+
+        #m2:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m3:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m4:checked~.calendar-grid {
+            --m: 6;
+        }
+
+        #m5:checked~.calendar-grid {
+            --m: 1;
+        }
+
+        #m6:checked~.calendar-grid {
+            --m: 4;
+        }
+
+        #m7:checked~.calendar-grid {
+            --m: 6;
+        }
+
+        #m8:checked~.calendar-grid {
+            --m: 2;
+        }
+
+        #m9:checked~.calendar-grid {
+            --m: 5;
+        }
+
+        #m10:checked~.calendar-grid {
+            --m: 0;
+        }
+
+        #m11:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m12:checked~.calendar-grid {
+            --m: 5;
+        }
+
+        /* 핵심 배치 로직 */
+        .d1 {
+            grid-column-start: calc(mod(calc(var(--y) + var(--m)) - 1, 7) + 1);
+        }
+
+        #m2:checked ~ .calendar-grid i:nth-of-type(n+29) { display: none; }
+
+        :is(#m4, #m6, #m9, #m11):checked ~ .calendar-grid i:nth-of-type(31) { display: none; }
+/*  */
+
+/*  */
+      :root {
+        --sp: 0.5s;
+        --ez: cubic-bezier(0.25, 1, 0.5, 1);
+        --in-R: enterRight var(--sp) var(--ez) forwards;
+        --out-L: exitLeft var(--sp) var(--ez) forwards;
+        --in-L: enterLeft var(--sp) var(--ez) forwards;
+        --out-R: exitRight var(--sp) var(--ez) forwards;
+      }
+
+      /* 기본 레이아웃 및 숨김 처리 */
+      .book-slider {
+        position: relative;
+        width: 800px;
+        height: 500px;
+        overflow: hidden;
+        margin: 0 auto;
+        background: #fff;
+      }
+
+      input[name="slider"] {
+        display: none;
+      }
+
+      .slides-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .slider {
+        position: absolute;
+        inset: 0;
+        display: none;
+        background: #fff;
+      }
+
+      .slider img {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* 키프레임 (방향 정의) */
+      @keyframes enterRight {
+        from {
+          transform: translateX(100%);
+        }
+
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes exitLeft {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes enterLeft {
+        from {
+          transform: translateX(-100%);
+        }
+
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes exitRight {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(100%);
+        }
+      }
+
+      /* 컨트롤 박스 공통 디자인 */
+      .controls {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        z-index: 10;
+      }
+
+      .controls label {
+        cursor: pointer;
+        padding: 10px 20px;
+        background: #333;
+        color: #fff;
+        border-radius: 5px;
+        animation: disableClick var(--sp) forwards;
+      }
+
+      @keyframes disableClick {
+        0%,
+        99% {
+          pointer-events: none;
+        }
+
+        100% {
+          pointer-events: auto;
+        }
+      }
+
+      [id^="r1-"]:checked ~ .controls-1,
+      [id^="r2-"]:checked ~ .controls-2,
+      [id^="r3-"]:checked ~ .controls-3,
+      [id^="r4-"]:checked ~ .controls-4 {
+        display: flex;
+      }
+
+      #r1-def:checked ~ .slides-container .slide1 {
+        display: block;
+      }
+
+      /* 1번으로 진입 */
+      #r1-next:checked ~ .slides-container .slide1 {
+        display: block;
+        animation: var(--in-R);
+      }
+
+      #r1-next:checked ~ .slides-container .slide4 {
+        display: block;
+        animation: var(--out-L);
+      }
+
+      /* <- 이전 슬라이드 번호(최대값) */
+      #r1-prev:checked ~ .slides-container .slide1 {
+        display: block;
+        animation: var(--in-L);
+      }
+
+      #r1-prev:checked ~ .slides-container .slide2 {
+        display: block;
+        animation: var(--out-R);
+      }
+
+      /* 2번으로 진입 */
+      #r2-next:checked ~ .slides-container .slide2 {
+        display: block;
+        animation: var(--in-R);
+      }
+
+      #r2-next:checked ~ .slides-container .slide1 {
+        display: block;
+        animation: var(--out-L);
+      }
+
+      #r2-prev:checked ~ .slides-container .slide2 {
+        display: block;
+        animation: var(--in-L);
+      }
+
+      #r2-prev:checked ~ .slides-container .slide3 {
+        display: block;
+        animation: var(--out-R);
+      }
+
+      /* 3번으로 진입 */
+      #r3-next:checked ~ .slides-container .slide3 {
+        display: block;
+        animation: var(--in-R);
+      }
+
+      #r3-next:checked ~ .slides-container .slide2 {
+        display: block;
+        animation: var(--out-L);
+      }
+
+      #r3-prev:checked ~ .slides-container .slide3 {
+        display: block;
+        animation: var(--in-L);
+      }
+
+      #r3-prev:checked ~ .slides-container .slide4 {
+        display: block;
+        animation: var(--out-R);
+      }
+
+      /* 4번으로 진입 */
+      #r4-next:checked ~ .slides-container .slide4 {
+        display: block;
+        animation: var(--in-R);
+      }
+
+      #r4-next:checked ~ .slides-container .slide3 {
+        display: block;
+        animation: var(--out-L);
+      }
+
+      #r4-prev:checked ~ .slides-container .slide4 {
+        display: block;
+        animation: var(--in-L);
+      }
+
+      #r4-prev:checked ~ .slides-container .slide1 {
+        display: block;
+        animation: var(--out-R);
+      }
 /*  */
 
 footer {
