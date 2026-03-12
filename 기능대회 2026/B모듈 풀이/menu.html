@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Only Dropdown</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        body {
+            padding: 50px;
+            background-color: #f8f9fa;
+            font-family: sans-serif;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .gnb {
+            display: inline-block;
+            border-radius: 8px;
+        }
+
+        .main-menu {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        /* 개별 메뉴 아이템 */
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .menu-label {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #333;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-item:hover .menu-label {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        /* 투명 버튼 */
+        .trigger {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            border: none;
+            z-index: 10;
+        }
+
+        .icon {
+            position: relative;
+            width: 12px;
+            height: 12px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .icon::before,
+        .icon::after {
+            content: '';
+            position: absolute;
+            background-color: currentColor;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .icon::before {
+            width: 12px;
+            height: 2px;
+        }
+
+        /* 가로선 (-) */
+        .icon::after {
+            width: 2px;
+            height: 12px;
+        }
+
+        /* 클릭 시 서브메뉴 애니메이션 및 [+] -> [-] 아이콘 회전 변경 */
+        .menu-item:focus-within .icon {
+            transform: rotate(180deg);
+        }
+
+        .menu-item:focus-within .icon::after {
+            transform: translate(-50%, -50%) scaleY(0);
+            opacity: 0;
+            /* 세로선이 사라지면서 - 모양만 남도록 변경 */
+        }
+
+        /* 서브메뉴 기본 상태 */
+        .submenu {
+            position: absolute;
+            top: 100%;
+
+            left: 0;
+            min-width: 180px;
+            background: #ffffff;
+            border-radius: 6px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 8px 0;
+            list-style: none;
+            z-index: 20;
+
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: visibility 0.3s, opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* 메인메뉴 클릭 시 서브메뉴 애니메이션 */
+        .menu-item:focus-within .submenu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .submenu-item a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #4b5563;
+            font-size: 14px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .submenu-item a:hover {
+            background-color: #f3f4f6;
+            color: #2563eb;
+        }
+
+        /*
+        * 마우스가 메뉴 영역(.menu-item) 전체에서 벗어나면 강제로 화면에서 지워버리기
+        * 화면에서 사라지는 순간(display: none) 브라우저는 해당 요소의 Focus 상태를 강제 해제하는 트릭
+        */
+        .menu-item:not(:hover) .trigger,
+        .menu-item:not(:hover) .submenu {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="gnb">
+            <ul class="main-menu">
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">도서관소개</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="#">도서관소개</a></li>
+                        <li class="submenu-item"><a href="#">도서관현황</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">도서자료실</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="#">자료실</a></li>
+                        <li class="submenu-item"><a href="#">열람실 예약</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">회원서비스</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="#">회원가입</a></li>
+                        <li class="submenu-item"><a href="#">마이페이지</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item">
+                    <div class="menu-label">
+                        <a href="#">도서검색</a>
+                    </div>
+                </li>
+
+                <li class="menu-item">
+                    <div class="menu-label">
+                        <a href="#">도서관리자</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+
+</html>

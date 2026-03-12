@@ -175,7 +175,7 @@ header {
 }
 
 .login a {
-    width: 50px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,12 +332,14 @@ header {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(50%);
+            filter: brightness(40%);
         }
 
         .slide-text {
+            font-size: 20px;
             position: absolute;
-            top: 0;
+            top: 35%;
+            left: 35%;
             color: #fff;
         }
 
@@ -407,12 +409,12 @@ header {
 
 
 section {
-height: 600px;
 }
 
 .notice {
     margin: 50px auto;
     width: 1000px;
+    height: 600px;
 }
 
 input[type="radio"] {
@@ -478,6 +480,118 @@ input[type="radio"] {
     color: #fff;
 }
 
+
+
+      /* 컨테이너 설정 */
+      .program-container {
+        display: flex;
+        gap: 15px;
+        padding: 60px 20px;
+        overflow: hidden;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+      }
+
+      /* 기본 상태 */
+      .program-item {
+        flex: 1 0 calc(25% - 15px);
+        max-width: calc(25% - 15px);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .program-item img {
+        width: 100%;
+      }
+
+      /* 1. 컨테이너에 마우스가 올라가면 모든 아이템을 일단 축소/흐리게 */
+      .program-container:has(.program-item:hover) .program-item {
+        transform: scale(0.95);
+        opacity: 0.5;
+        filter: grayscale(0.95);
+      }
+
+      /* 2. 그 중 마우스가 직접 올라간 아이템만 다시 확대/강조 */
+      .program-item:hover {
+        transform: scale(1.05) !important;
+        filter: grayscale(0) blur(0) !important;
+        opacity: 1 !important;
+        z-index: 10;
+      }
+
+      /* 프로그램 이름 효과 */
+      .program-name {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 10px 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .program-item:hover .program-name {
+        opacity: 1;
+      }
+
+      /* 모달 로직 */
+      .modal-state {
+        display: none;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      /* 각 radio 버튼이 체크되면 해당 모달 표시 */
+      #modal-1:checked ~ .modal-overlay[data-modal="1"],
+      #modal-2:checked ~ .modal-overlay[data-modal="2"],
+      #modal-3:checked ~ .modal-overlay[data-modal="3"],
+      #modal-4:checked ~ .modal-overlay[data-modal="4"],
+      #modal-5:checked ~ .modal-overlay[data-modal="5"],
+      #modal-6:checked ~ .modal-overlay[data-modal="6"],
+      #modal-7:checked ~ .modal-overlay[data-modal="7"],
+      #modal-8:checked ~ .modal-overlay[data-modal="8"] {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .close-btn {
+        cursor: pointer;
+        color: #007bff;
+      }
+
+      .close-btn:hover {
+        text-decoration: underline;
+      }
+/*  */
 
 
 footer {

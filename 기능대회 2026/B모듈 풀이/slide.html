@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-container {
+            position: relative;
+            width: 960px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slide-wrapper {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: slide-infinite 9s infinite linear;
+        }
+
+        .slide {
+            width: 25%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 진행 막대 애니메이션 */
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background: #ff0000;
+            animation: progress-fill 3s infinite linear;
+            animation-delay: -0.75s;
+        }
+
+        /* 마우스 오버 시 전체 일시 정지 */
+        .slider-container:hover .slide-wrapper,
+        .slider-container:hover .progress-bar {
+            animation-play-state: paused;
+        }
+
+
+        /* 멈추는 시간 25% => 2.25초
+        이동하는 시간 8% = 약 0.75초 */
+        @keyframes slide-infinite {
+            0%,
+            25% {
+                transform: translateX(0);
+            }
+
+            /* 1번 대기 */
+            33.33%,
+            58.33% {
+                transform: translateX(-25%);
+            }
+
+            /* 2번 대기 (3초에 딱 도착) */
+            66.66%,
+            91.66% {
+                transform: translateX(-50%);
+            }
+
+            /* 3번 대기 (6초에 딱 도착) */
+            100% {
+                transform: translateX(-75%);
+            }
+
+            /* 1번복제본 (9초에 딱 도착) */
+        }
+
+        @keyframes progress-fill {
+            0%, 25% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider-container">
+        <div class="slide-wrapper">
+            <div class="slide">
+                <img src="./image1.jpg" alt="슬라이드1">
+                <div class="slide-text">
+                    <h2>최고의 기술력, T1과 함께</h2>
+                    <p>혁신적인 웹 솔루션을 경험하세요.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image2.jpg" alt="슬라이드2">
+                <div class="slide-text">
+                    <h2>데이터 기반의 미래 설계</h2>
+                    <p>정확한 분석으로 성공을 약속합니다.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image3.jpg" alt="슬라이드3">
+                <div class="slide-text">
+                    <h2>창의적인 디자인의 완성</h2>
+                    <p>당신의 아이디어를 시각화합니다.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./image1.jpg" alt="슬라이드1">
+                <div class="slide-text">
+                    <h2>최고의 기술력, T1과 함께</h2>
+                    <p>혁신적인 웹 솔루션을 경험하세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

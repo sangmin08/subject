@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 컨테이너 및 기본 스타일 */
+        .view-port {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            background: #eee;
+            overflow: hidden;
+            border: 2px solid #333;
+        }
+
+        /* 슬라이드 아이템 (겹쳐 쌓기) */
+        .slide-item {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            opacity: 0;
+            transform: scale(0.9);
+            /* 약간 작게 시작 (중간과정 생략 효과 극대화) */
+            transition: all 0.5s ease-in-out;
+            list-style: none;
+        }
+
+        /* 활성화된 슬라이드 애니메이션 */
+        #s1:checked~.view-port .s1,
+        #s2:checked~.view-port .s2,
+        #s3:checked~.view-port .s3 {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* 버튼 스타일 (확실히 보이게 설정) */
+        .controls label {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* 검정 투명 배경 */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            /* 슬라이드보다 무조건 위 */
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .controls label:hover {
+            background-color: #ff4757;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* 현재 활성화된 버튼 그룹만 표시 */
+        .ctrl-group {
+            display: none;
+        }
+
+        #s1:checked~.view-port .g1,
+        #s2:checked~.view-port .g2,
+        #s3:checked~.view-port .g3 {
+            display: block;
+        }
+
+        /* 페이지 번호 (CSS Counter) */
+        .counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 15px;
+            border-radius: 20px;
+            z-index: 100;
+            font-weight: bold;
+        }
+
+        #s1:checked~.view-port .cur::before {
+            content: "1";
+        }
+
+        #s2:checked~.view-port .cur::before {
+            content: "2";
+        }
+
+        #s3:checked~.view-port .cur::before {
+            content: "3";
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider-wrapper">
+        <input type="radio" name="slide" id="s1" checked>
+        <input type="radio" name="slide" id="s2">
+        <input type="radio" name="slide" id="s3">
+
+        <div class="view-port">
+            <ul class="slide-container">
+                <li class="slide-item s1"><img src="image1.jpg" alt="1"></li>
+                <li class="slide-item s2"><img src="image2.jpg" alt="2"></li>
+                <li class="slide-item s3"><img src="image3.jpg" alt="3"></li>
+            </ul>
+
+            <div class="controls">
+                <div class="ctrl-group g1">
+                    <label for="s3" class="prev">◀</label>
+                    <label for="s2" class="next">▶</label>
+                </div>
+                <div class="ctrl-group g2">
+                    <label for="s1" class="prev">◀</label>
+                    <label for="s3" class="next">▶</label>
+                </div>
+                <div class="ctrl-group g3">
+                    <label for="s2" class="prev">◀</label>
+                    <label for="s1" class="next">▶</label>
+                </div>
+            </div>
+
+            <div class="counter"><span class="cur"></span> / 3</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        /* [연도 오프셋] 1월 1일 요일값 (1:일, 2:월, 3:화, 4:수, 5:목, 6:금, 7:토) */
+        #y25:checked~.calendar-grid {
+            --y: 4;
+        }
+
+        #y26:checked~.calendar-grid {
+            --y: 5;
+        }
+
+        #y27:checked~.calendar-grid {
+            --y: 6;
+        }
+
+        /* [월 오프셋] 1월 1일로부터 누적된 일수 */
+        #m1:checked~.calendar-grid {
+            --m: 0;
+        }
+
+        #m2:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m3:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m4:checked~.calendar-grid {
+            --m: 6;
+        }
+
+        #m5:checked~.calendar-grid {
+            --m: 1;
+        }
+
+        #m6:checked~.calendar-grid {
+            --m: 4;
+        }
+
+        #m7:checked~.calendar-grid {
+            --m: 6;
+        }
+
+        #m8:checked~.calendar-grid {
+            --m: 2;
+        }
+
+        #m9:checked~.calendar-grid {
+            --m: 5;
+        }
+
+        #m10:checked~.calendar-grid {
+            --m: 0;
+        }
+
+        #m11:checked~.calendar-grid {
+            --m: 3;
+        }
+
+        #m12:checked~.calendar-grid {
+            --m: 5;
+        }
+
+        /* 핵심 배치 로직 */
+        .d1 {
+            grid-column-start: calc(mod(calc(var(--y) + var(--m)) - 1, 7) + 1);
+        }
+
+        #m2:checked ~ .calendar-grid i:nth-of-type(n+29) { display: none; }
+
+        :is(#m4, #m6, #m9, #m11):checked ~ .calendar-grid i:nth-of-type(31) { display: none; }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="calendar-wrapper">
+        <input type="radio" name="y" id="y25"><label for="y25">2025</label>
+        <input type="radio" name="y" id="y26" checked><label for="y26">2026</label>
+        <input type="radio" name="y" id="y27"><label for="y27">2027</label>
+
+        <input type="radio" name="m" id="m1"><label for="m1">1월</label>
+        <input type="radio" name="m" id="m2"><label for="m2">2월</label>
+        <input type="radio" name="m" id="m3"><label for="m3">3월</label>
+        <input type="radio" name="m" id="m4" checked><label for="m4">4월</label>
+        <input type="radio" name="m" id="m5"><label for="m5">5월</label>
+        <input type="radio" name="m" id="m6"><label for="m6">6월</label>
+        <input type="radio" name="m" id="m7"><label for="m7">7월</label>
+        <input type="radio" name="m" id="m8"><label for="m8">8월</label>
+        <input type="radio" name="m" id="m9"><label for="m9">9월</label>
+        <input type="radio" name="m" id="m10"><label for="m10">10월</label>
+        <input type="radio" name="m" id="m11"><label for="m11">11월</label>
+        <input type="radio" name="m" id="m12"><label for="m12">12월</label>
+
+        <div class="calendar-grid">
+            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+            <i class="d1">1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i>
+            <i>11</i><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i>18</i><i>19</i><i>20</i>
+            <i>21</i><i>22</i><i>23</i><i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i><i>31</i>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

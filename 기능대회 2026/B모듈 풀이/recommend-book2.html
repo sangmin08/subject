@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* --- 최신 CSS 기술: 변수 선언 --- */
+        :root {
+            --slide-speed: 0.5s;
+            /* 부드럽고 세련된 JS 느낌의 가속도 곡선 */
+            --easing: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 기본 설정 */
+        .book-slider {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            overflow: hidden;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        input[name="slider"] {
+            display: none;
+        }
+
+        .slides-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            /* top:0, left:0, right:0, bottom:0 의 최신 단축 속성 */
+            display: none;
+            /* 핵심: 이동하지 않는 모든 슬라이드는 아예 화면에서 삭제됨 */
+            background: #fff;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- [필수 조건] 컨트롤러 노출 (최신 :is() 선택자 활용) --- */
+        .controls {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 10;
+        }
+
+        /* 어느 방향으로 들어왔든 해당 번호면 컨트롤러 노출 */
+        :is(#r1-default, #r1-next, #r1-prev):checked~.controls-1,
+        :is(#r2-next, #r2-prev):checked~.controls-2,
+        :is(#r3-next, #r3-prev):checked~.controls-3,
+        :is(#r4-next, #r4-prev):checked~.controls-4 {
+            display: flex;
+        }
+
+        /* --- [필수 조건] 슬라이드 중 클릭 방지 --- */
+        /* 별도의 blocker div 없이, 버튼 자체가 화면에 나타날 때 0.5초간 클릭 비활성화 */
+        @keyframes disableClick {
+
+            0%,
+            99.99% {
+                pointer-events: none;
+            }
+
+            100% {
+                pointer-events: auto;
+            }
+        }
+
+        .controls label {
+            cursor: pointer;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            user-select: none;
+            /* 버튼 그룹이 display:flex 될 때마다 이 애니메이션이 자동 실행됨 */
+            animation: disableClick var(--slide-speed) forwards;
+        }
+
+
+        /* --- [핵심 로직] 방향별 명시적 애니메이션 --- */
+        @keyframes enterRight {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes exitLeft {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes enterLeft {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes exitRight {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        /* 1. 최초 로드 시 */
+        #r1-default:checked~.slides-container .slide1 {
+            display: block;
+        }
+
+        /* 2. [1번 슬라이드로 이동할 때] */
+        /* 4번에서 Next 버튼 클릭 시 */
+        #r1-next:checked~.slides-container .slide1 {
+            display: block;
+            animation: enterRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r1-next:checked~.slides-container .slide4 {
+            display: block;
+            animation: exitLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        /* 2번에서 Prev 버튼 클릭 시 */
+        #r1-prev:checked~.slides-container .slide1 {
+            display: block;
+            animation: enterLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r1-prev:checked~.slides-container .slide2 {
+            display: block;
+            animation: exitRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        /* 3. [2번 슬라이드로 이동할 때] */
+        #r2-next:checked~.slides-container .slide2 {
+            display: block;
+            animation: enterRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r2-next:checked~.slides-container .slide1 {
+            display: block;
+            animation: exitLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r2-prev:checked~.slides-container .slide2 {
+            display: block;
+            animation: enterLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r2-prev:checked~.slides-container .slide3 {
+            display: block;
+            animation: exitRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        /* 4. [3번 슬라이드로 이동할 때] */
+        #r3-next:checked~.slides-container .slide3 {
+            display: block;
+            animation: enterRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r3-next:checked~.slides-container .slide2 {
+            display: block;
+            animation: exitLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r3-prev:checked~.slides-container .slide3 {
+            display: block;
+            animation: enterLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r3-prev:checked~.slides-container .slide4 {
+            display: block;
+            animation: exitRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        /* 5. [4번 슬라이드로 이동할 때] */
+        #r4-next:checked~.slides-container .slide4 {
+            display: block;
+            animation: enterRight var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r4-next:checked~.slides-container .slide3 {
+            display: block;
+            animation: exitLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r4-prev:checked~.slides-container .slide4 {
+            display: block;
+            animation: enterLeft var(--slide-speed) var(--easing) forwards;
+        }
+
+        #r4-prev:checked~.slides-container .slide1 {
+            display: block;
+            animation: exitRight var(--slide-speed) var(--easing) forwards;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="book-slider">
+        <input type="radio" name="slider" id="r1-default" checked>
+        <input type="radio" name="slider" id="r1-next">
+        <input type="radio" name="slider" id="r1-prev">
+        <input type="radio" name="slider" id="r2-next">
+        <input type="radio" name="slider" id="r2-prev">
+        <input type="radio" name="slider" id="r3-next">
+        <input type="radio" name="slider" id="r3-prev">
+        <input type="radio" name="slider" id="r4-next">
+        <input type="radio" name="slider" id="r4-prev">
+
+        <div class="slides-container">
+            <div class="slide slide1">
+                <img src="image1.jpg" alt="추천도서 1">
+                <div class="book-text">추천도서 1</div>
+            </div>
+            <div class="slide slide2">
+                <img src="image2.jpg" alt="추천도서 2">
+                <div class="book-text">추천도서 2</div>
+            </div>
+            <div class="slide slide3">
+                <img src="image3.jpg" alt="추천도서 3">
+                <div class="book-text">추천도서 3</div>
+            </div>
+            <div class="slide slide4">
+                <img src="image4.jpg" alt="추천도서 4">
+                <div class="book-text">추천도서 4</div>
+            </div>
+        </div>
+
+        <div class="controls controls-1">
+            <label for="r4-prev" class="btn-prev">이전</label>
+            <div class="page-info">1 / 4</div>
+            <label for="r2-next" class="btn-next">다음</label>
+        </div>
+
+        <div class="controls controls-2">
+            <label for="r1-prev" class="btn-prev">이전</label>
+            <div class="page-info">2 / 4</div>
+            <label for="r3-next" class="btn-next">다음</label>
+        </div>
+
+        <div class="controls controls-3">
+            <label for="r2-prev" class="btn-prev">이전</label>
+            <div class="page-info">3 / 4</div>
+            <label for="r4-next" class="btn-next">다음</label>
+        </div>
+
+        <div class="controls controls-4">
+            <label for="r3-prev" class="btn-prev">이전</label>
+            <div class="page-info">4 / 4</div>
+            <label for="r1-next" class="btn-next">다음</label>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 컨테이너 설정 */
+        .program-container {
+            display: flex;
+            gap: 15px;
+            padding: 60px 20px;
+            overflow: hidden;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        /* 기본 상태 */
+        .program-item {
+            flex: 1 0 calc(25% - 15px);
+            max-width: calc(25% - 15px);
+            transition: all 0.4s ease;
+            /* 부드러운 변화 */
+            position: relative;
+            cursor: pointer;
+        }
+
+        .program-item img {
+            width: 100%;
+        }
+
+        /* 1. 컨테이너에 마우스가 올라가면 모든 아이템을 일단 축소/흐리게 */
+        .program-container:has(.program-item:hover) .program-item {
+            transform: scale(0.95);
+            opacity: 0.5;
+            filter: grayscale(0.95);
+        }
+
+        /* 2. 그 중 마우스가 직접 올라간 아이템만 다시 확대/강조 */
+        .program-item:hover {
+            transform: scale(1.1) !important;
+            filter: grayscale(0) blur(0) !important;
+            opacity: 1 !important;
+            z-index: 10;
+        }
+
+        /* 프로그램 이름 효과 */
+        .program-name {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .program-item:hover .program-name {
+            opacity: 1;
+        }
+
+        /* 모달 로직 (이전과 동일) */
+        .modal-state {
+            display: none;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal-state:checked~.modal-overlay {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="program-section">
+        <h2>이달의 개최 프로그램</h2>
+
+        <input type="radio" name="modal-group" id="modal-close" class="modal-state" checked>
+
+        <div class="program-container">
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-1" class="modal-state">
+                <label for="modal-1" class="item-card">
+                    <img src="image1.jpg" alt="P1">
+                    <span class="program-name">프로그램 명칭 01</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 01 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-2" class="modal-state">
+                <label for="modal-2" class="item-card">
+                    <img src="image2.jpg" alt="P2">
+                    <span class="program-name">프로그램 명칭 02</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 02 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-3" class="modal-state">
+                <label for="modal-3" class="item-card">
+                    <img src="image3.jpg" alt="P3">
+                    <span class="program-name">프로그램 명칭 03</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 03 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-4" class="modal-state">
+                <label for="modal-4" class="item-card">
+                    <img src="image4.jpg" alt="P4">
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 04 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-4" class="modal-state">
+                <label for="modal-4" class="item-card">
+                    <img src="image4.jpg" alt="P4">
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 04 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-4" class="modal-state">
+                <label for="modal-4" class="item-card">
+                    <img src="image4.jpg" alt="P4">
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 04 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-4" class="modal-state">
+                <label for="modal-4" class="item-card">
+                    <img src="image4.jpg" alt="P4">
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 04 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-item">
+                <input type="radio" name="modal-group" id="modal-4" class="modal-state">
+                <label for="modal-4" class="item-card">
+                    <img src="image4.jpg" alt="P4">
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <h3>프로그램 04 상세정보</h3>
+                        <p>상세 설명 텍스트...</p>
+                        <label for="modal-close" class="close-btn">[닫기]</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
