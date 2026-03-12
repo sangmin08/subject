@@ -1,18 +1,20 @@
 body {
     padding: 0;
     margin: 0;
+    color: #243447;
+    background-color: #f8f6f1;
 }
 
 a {
     text-decoration: none;
-    color: #000;
+    color: #243447;
 }
 
 header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    background-color: #eee;
+    background-color: #fffdf8;
 }
 
 .logo {
@@ -21,152 +23,146 @@ header {
     justify-content: center;
 }
 
-.logo img{
+.logo img {
     width: 100px;
 }
 
 /*  */
-    .gnb {
-        display: inline-block;
-        border-radius: 8px;
-    }
+.gnb {
+    display: inline-block;
+    border-radius: 8px;
+}
 
-    .main-menu {
-        display: flex;
-        gap: 15px;
-        list-style: none;
-    }
+.main-menu {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
 
-    /* 개별 메뉴 아이템 */
-    .menu-item {
-        position: relative;
-        cursor: pointer;
-    }
+/* 개별 메뉴 아이템 */
+.menu-item {
+    position: relative;
+    cursor: pointer;
+}
 
-    .menu-label {
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 12px 16px;
-        font-weight: bold;
-        border-radius: 6px;
-        transition: background-color 0.2s ease, color 0.2s ease;
-    }
+.menu-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-    .menu-item:hover .menu-label {
-        background-color: #aaa;
-        color: #fff;
-    }
+.menu-item:hover .menu-label {
+    background-color: #e9eef5;
+    color: #1f3a5f;
+}
 
-    .menu-item:hover > div > a{
-        color: #eee;
-    }
+.menu-item:hover>div>a {
+    color: #1f3a5f;
+}
 
-    /* 투명 버튼 */
-    .trigger {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-        border: none;
-        z-index: 10;
-    }
+/* 투명 버튼 */
+.trigger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    z-index: 10;
+}
 
-    .icon {
-        position: relative;
-        width: 12px;
-        height: 12px;
-        margin-left: 10px;
-        transition: transform 0.3s ease;
-    }
+.icon {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
 
-    .icon::before,
-    .icon::after {
-        content: '';
-        position: absolute;
-        background-color: currentColor;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
+.icon::before,
+.icon::after {
+    content: '';
+    position: absolute;
+    background-color: currentColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-    .icon::before {
-        width: 12px;
-        height: 2px;
-    }
+.icon::before {
+    width: 12px;
+    height: 2px;
+}
 
-    /* 가로선 (-) */
-    .icon::after {
-        width: 2px;
-        height: 12px;
-    }
+/* 가로선 (-) */
+.icon::after {
+    width: 2px;
+    height: 12px;
+}
 
-    /* 클릭 시 서브메뉴 애니메이션 및 [+] -> [-] 아이콘 회전 변경 */
-    .menu-item:focus-within .icon {
-        transform: rotate(180deg);
-    }
+/* 클릭 시 서브메뉴 애니메이션 및 [+] -> [-] 아이콘 회전 변경 */
+.menu-item:focus-within .icon {
+    transform: rotate(180deg);
+}
 
-    .menu-item:focus-within .icon::after {
-        transform: translate(-50%, -50%) scaleY(0);
-        opacity: 0;
-        /* 세로선이 사라지면서 - 모양만 남도록 변경 */
-    }
+.menu-item:focus-within .icon::after {
+    transform: translate(-50%, -50%) scaleY(0);
+    opacity: 0;
+}
 
-    /* 서브메뉴 기본 상태 */
-    .submenu {
-        position: absolute;
-        top: 100%;
+/* 서브메뉴 기본 상태 */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: #fffdf8;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(31, 58, 95, 0.12);
+    padding: 8px 0;
+    list-style: none;
+    z-index: 20;
 
-        left: 0;
-        min-width: 180px;
-        background: #ffffff;
-        border-radius: 6px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        padding: 8px 0;
-        list-style: none;
-        z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: visibility 0.3s, opacity 0.3s ease, transform 0.3s ease;
+}
 
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: visibility 0.3s, opacity 0.3s ease, transform 0.3s ease;
-    }
+/* 메인메뉴 클릭 시 서브메뉴 애니메이션 */
+.menu-item:focus-within .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    /* 메인메뉴 클릭 시 서브메뉴 애니메이션 */
-    .menu-item:focus-within .submenu {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-    }
+.submenu-item a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #4d5d6c;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
 
-    .submenu-item a {
-        display: block;
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #aaa;
-        font-size: 14px;
-        transition: background-color 0.2s, color 0.2s;
-    }
+.submenu-item a:hover {
+    background-color: #eef3f8;
+    color: #243447;
+}
 
-    .submenu-item a:hover {
-        background-color: #f3f4f6;
-        color: #000;
-    }
+.menu-item:not(:hover) .trigger,
+.menu-item:not(:hover) .submenu {
+    display: none !important;
+}
 
-    /*
-    * 마우스가 메뉴 영역(.menu-item) 전체에서 벗어나면 강제로 화면에서 지워버리기
-    * 화면에서 사라지는 순간(display: none) 브라우저는 해당 요소의 Focus 상태를 강제 해제하는 트릭
-    */
-    .menu-item:not(:hover) .trigger,
-    .menu-item:not(:hover) .submenu {
-        display: none !important;
-    }
 /*  */
-
 
 .login {
     display: flex;
@@ -180,13 +176,13 @@ header {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    color: #000;
+    color: #243447;
     transition: background-color 0.2s, color 0.2s;
 }
 
 .login a:hover {
     color: #fff;
-    background-color: #aaa;
+    background-color: #1f3a5f;
 }
 
 #sign-in {
@@ -196,7 +192,7 @@ header {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(20, 30, 48, 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,13 +204,12 @@ header {
     height: 400px;
     width: 400px;
     text-align: center;
-    background-color: #fff;
+    background-color: #fffdf8;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
     position: relative;
-
 }
 
 #sign-in input {
@@ -222,7 +217,9 @@ header {
     padding: 15px;
     margin-bottom: 5px;
     border-radius: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #d9e0e8;
+    background-color: #ffffff;
+    color: #243447;
 }
 
 #sign-in button {
@@ -231,13 +228,15 @@ header {
     margin-bottom: 5px;
     border-radius: 10px;
     border: none;
+    background-color: #d8e4f0;
+    color: #1f3a5f;
 }
 
 #sign-in button:hover {
     cursor: pointer;
-    background-color: #bbb;
+    background-color: #1f3a5f;
+    color: #fff;
 }
-
 
 #sign-in:not(:target) {
     visibility: hidden;
@@ -249,7 +248,7 @@ header {
     top: 10%;
     right: 10%;
     text-decoration: none;
-    color: #000;
+    color: #243447;
 }
 
 .popup {
@@ -261,13 +260,14 @@ header {
     z-index: 999;
 }
 
-.popup > div > div {
+.popup>div>div {
     width: 350px;
     height: 100%;
     padding: 20px;
-    border: 1px solid #aaa;
+    border: 1px solid #d9e0e8;
     animation: fadeIn 0.3s ease-in-out;
-    background-color: #fff;
+    background-color: #fffdf8;
+    color: #243447;
 }
 
 .popup input {
@@ -279,8 +279,10 @@ header {
     padding: 10px 0;
     display: block;
     text-align: center;
-    border: 1px solid #000;
+    border: 1px solid #1f3a5f;
     border-radius: 10px;
+    color: #1f3a5f;
+    background-color: #f7f9fc;
 }
 
 .popup .img {
@@ -293,160 +295,166 @@ header {
 }
 
 .popup label:hover {
-    background-color: #eee;
+    background-color: #e9eef5;
     cursor: pointer;
 }
 
-.popup > div > input:checked ~ div{
+.popup>div>input:checked~div {
     display: none;
 }
 
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-
 /*  */
-    .slider-container {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-        }
-
-        .slide-wrapper {
-            display: flex;
-            width: 400%;
-            height: 100%;
-            animation: slide-infinite 9s infinite linear;
-        }
-
-        .slide {
-            width: 25%;
-            height: 100%;
-            position: relative;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(40%);
-        }
-
-        .slide-text {
-            font-size: 20px;
-            position: absolute;
-            top: 35%;
-            left: 35%;
-            color: #fff;
-        }
-
-        .progress-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* 진행 막대 애니메이션 */
-        .progress-bar {
-            width: 0;
-            height: 100%;
-            background: #ff0000;
-            animation: progress-fill 3s infinite linear;
-            animation-delay: -0.75s;
-        }
-
-        /* 마우스 오버 시 전체 일시 정지 */
-        .slider-container:hover .slide-wrapper,
-        .slider-container:hover .progress-bar {
-            animation-play-state: paused;
-        }
-
-
-        /* 멈추는 시간 25% => 2.25초
-        이동하는 시간 8% = 약 0.75초 */
-        @keyframes slide-infinite {
-            0%,
-            25% {
-                transform: translateX(0);
-            }
-
-            /* 1번 대기 */
-            33.33%,
-            58.33% {
-                transform: translateX(-25%);
-            }
-
-            /* 2번 대기 (3초에 딱 도착) */
-            66.66%,
-            91.66% {
-                transform: translateX(-50%);
-            }
-
-            /* 3번 대기 (6초에 딱 도착) */
-            100% {
-                transform: translateX(-75%);
-            }
-
-            /* 1번복제본 (9초에 딱 도착) */
-        }
-
-        @keyframes progress-fill {
-            0%, 25% {
-                width: 0;
-            }
-
-            100% {
-                width: 100%;
-            }
-        }
-/*  */
-
-
-section {
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
 }
+
+.slide-wrapper {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    animation: slide-infinite 9s infinite linear;
+}
+
+.slide {
+    width: 25%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(40%);
+}
+
+.slide-text {
+    font-size: 20px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    color: #fdfcf8;
+}
+
+.progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 248, 240, 0.3);
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: #4f6d8a;
+    animation: progress-fill 3s infinite linear;
+    animation-delay: -0.75s;
+}
+
+.slider-container:hover .slide-wrapper,
+.slider-container:hover .progress-bar {
+    animation-play-state: paused;
+}
+
+@keyframes slide-infinite {
+    0%,
+    25% {
+        transform: translateX(0);
+    }
+
+    33.33%,
+    58.33% {
+        transform: translateX(-25%);
+    }
+
+    66.66%,
+    91.66% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(-75%);
+    }
+}
+
+@keyframes progress-fill {
+    0%,
+    25% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/*  */
 
 .notice {
+    text-align: center;
     margin: 50px auto;
-    width: 1000px;
+    width: 1200px;
     height: 600px;
+}
+
+h1 {
+    border-bottom: 2px solid #243447;
+    padding: 30px;
 }
 
 input[type="radio"] {
     display: none;
 }
 
+
 .tag {
     display: flex;
+    gap: 10px; 
+    margin-bottom: 20px;
 }
 
 .tag label {
-    padding: 15px 25px;
-    border: 1px solid #aaa;
+    padding: 10px 15px;
+    border: 1px solid #d8e0e8;
     border-bottom: none;
-    background-color: #f5f5f5;
+    background-color: #f3f6fa;
+    color: #4d5d6c;
     cursor: pointer;
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
 .tag label:hover {
-    background-color: #aaa;
+    background-color: #4f6d8a;
     color: #fff;
 }
 
 .news {
-    width: 1000px;
-    border-top: 1px solid #aaa;
+    width: 1200px;
+    border-top: 1px solid #243447;
+    border-bottom: 1px solid #243447;
+    background-color: #fffdf8;
 }
 
-.news > div {
+.news>div {
     display: none;
     width: 100%;
-    height: 300px;
+    height: 100%;
 }
 
 .new {
@@ -455,153 +463,159 @@ input[type="radio"] {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #e2e8ef;
 }
 
+
+.news .new:hover{
+    background:#f5f7fa;
+    cursor:pointer;
+}
 .new p:first-child {
     font-size: 15px;
+    color: #243447;
 }
 
 .new p:last-child {
     font-size: 14px;
-    color: #666;
+    color: #7a8896;
 }
 
-#news1:checked ~ .news .news1,
-#news2:checked ~ .news .news2,
-#news3:checked ~ .news .news3 {
+#news1:checked~.news .news1,
+#news2:checked~.news .news2,
+#news3:checked~.news .news3 {
     display: block;
 }
 
-#news1:checked ~ .tag label[for="news1"],
-#news2:checked ~ .tag label[for="news2"],
-#news3:checked ~ .tag label[for="news3"] {
-    background-color: #666;
+#news1:checked~.tag label[for="news1"],
+#news2:checked~.tag label[for="news2"],
+#news3:checked~.tag label[for="news3"] {
+    background-color: #1f3a5f;
     color: #fff;
 }
 
+.program-section {
+    width: 1200px;
+    text-align: center;
+    color: #243447;
+    margin: auto;
+}
 
+.program-container {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
 
-      /* 컨테이너 설정 */
-      .program-container {
-        display: flex;
-        gap: 15px;
-        padding: 60px 20px;
-        overflow: hidden;
-        flex-wrap: wrap;
-        box-sizing: border-box;
-      }
+.program-item {
+    flex: 1 0 calc(25% - 15px);
+    max-width: calc(25% - 15px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    cursor: pointer;
+}
 
-      /* 기본 상태 */
-      .program-item {
-        flex: 1 0 calc(25% - 15px);
-        max-width: calc(25% - 15px);
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        cursor: pointer;
-      }
+.program-item img {
+    width: 100%;
+    height: 100%;
+}
 
-      .program-item img {
-        width: 100%;
-      }
+.program-container:has(.program-item:hover) .program-item {
+    transform: scale(0.95);
+    opacity: 0.5;
+    filter: grayscale(0.95);
+}
 
-      /* 1. 컨테이너에 마우스가 올라가면 모든 아이템을 일단 축소/흐리게 */
-      .program-container:has(.program-item:hover) .program-item {
-        transform: scale(0.95);
-        opacity: 0.5;
-        filter: grayscale(0.95);
-      }
+.program-item:hover {
+    transform: scale(1.05) !important;
+    filter: grayscale(0) blur(0) !important;
+    opacity: 1 !important;
+    z-index: 10;
+}
 
-      /* 2. 그 중 마우스가 직접 올라간 아이템만 다시 확대/강조 */
-      .program-item:hover {
-        transform: scale(1.05) !important;
-        filter: grayscale(0) blur(0) !important;
-        opacity: 1 !important;
-        z-index: 10;
-      }
+.program-name {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(31, 58, 95, 0.75);
+    color: #fff;
+    padding: 10px 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 
-      /* 프로그램 이름 효과 */
-      .program-name {
-        position: absolute;
-        bottom: 10%;
-        left: 0;
-        right: 0;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        padding: 10px 0;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
+.program-item:hover .program-name {
+    opacity: 1;
+}
 
-      .program-item:hover .program-name {
-        opacity: 1;
-      }
+.modal-state {
+    display: none;
+}
 
-      /* 모달 로직 */
-      .modal-state {
-        display: none;
-      }
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 29, 43, 0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.85);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
 
-        visibility: hidden;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
+.modal-content {
+    background: #fffdf8;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    color: #243447;
+}
 
-      .modal-content {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 800px;
-        width: 100%;
-      }
+#modal-1:checked~.modal-overlay[data-modal="1"],
+#modal-2:checked~.modal-overlay[data-modal="2"],
+#modal-3:checked~.modal-overlay[data-modal="3"],
+#modal-4:checked~.modal-overlay[data-modal="4"],
+#modal-5:checked~.modal-overlay[data-modal="5"],
+#modal-6:checked~.modal-overlay[data-modal="6"],
+#modal-7:checked~.modal-overlay[data-modal="7"],
+#modal-8:checked~.modal-overlay[data-modal="8"] {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
 
-      /* 각 radio 버튼이 체크되면 해당 모달 표시 */
-      #modal-1:checked ~ .modal-overlay[data-modal="1"],
-      #modal-2:checked ~ .modal-overlay[data-modal="2"],
-      #modal-3:checked ~ .modal-overlay[data-modal="3"],
-      #modal-4:checked ~ .modal-overlay[data-modal="4"],
-      #modal-5:checked ~ .modal-overlay[data-modal="5"],
-      #modal-6:checked ~ .modal-overlay[data-modal="6"],
-      #modal-7:checked ~ .modal-overlay[data-modal="7"],
-      #modal-8:checked ~ .modal-overlay[data-modal="8"] {
-        visibility: visible;
-        opacity: 1;
-        pointer-events: auto;
-      }
+.close-btn {
+    cursor: pointer;
+    color: #1f3a5f;
+}
 
-      .close-btn {
-        cursor: pointer;
-        color: #007bff;
-      }
+.close-btn:hover {
+    text-decoration: underline;
+}
 
-      .close-btn:hover {
-        text-decoration: underline;
-      }
 /*  */
-
 
 footer {
     padding: 60px;
-    background-color: #000;
-    color: #aaa;
+    background-color: #1f2a38;
+    color: #d8dee6;
 }
 
 footer hr {
-    background: #222;
+    background: #415163;
     height: 1px;
     border: 0;
 }
@@ -621,7 +635,7 @@ footer hr {
     line-height: 10px;
 }
 
-.top-footer .right div{
+.top-footer .right div {
     display: flex;
     gap: 20px;
 }
@@ -629,7 +643,7 @@ footer hr {
 .top-footer .circle {
     width: 64px;
     height: 64px;
-    border: 1px solid #aaa;
+    border: 1px solid #4f6d8a;
     border-radius: 40px;
 }
 

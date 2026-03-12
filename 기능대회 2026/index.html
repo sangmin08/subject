@@ -134,17 +134,18 @@
 
     <section>
         <div class="notice">
+            <h1>도서관 소식</h1>
 
             <input type="radio" name="news" id="news1" checked>
             <input type="radio" name="news" id="news2">
             <input type="radio" name="news" id="news3">
-            
+
             <div class="tag">
                 <label for="news1">일반공지</label>
                 <label for="news2">행사안내</label>
                 <label for="news3">채용안내</label>
             </div>
-            
+
             <div class="news">
                 <div class="news1">
                     <div class="new">
@@ -230,172 +231,166 @@
                 </div>
             </div>
         </div>
-        </section>
-       <section class="program-section">
-      <h2>이달의 개최 프로그램</h2>
+    </section>
+    <section class="program-section">
+        <h1>이달의 개최 프로그램</h1>
 
-      <!-- 라디오 버튼들을 section 바로 아래에 배치 -->
-      <input
-        type="radio"
-        name="modal-group"
-        id="modal-close"
-        class="modal-state"
-        checked
-      />
-      <input type="radio" name="modal-group" id="modal-1" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-2" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-3" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-4" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-5" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-6" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-7" class="modal-state" />
-      <input type="radio" name="modal-group" id="modal-8" class="modal-state" />
+        <!-- 라디오 버튼들을 section 바로 아래에 배치 -->
+        <input type="radio" name="modal-group" id="modal-close" class="modal-state" checked />
+        <input type="radio" name="modal-group" id="modal-1" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-2" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-3" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-4" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-5" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-6" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-7" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-8" class="modal-state" />
 
-      <!-- 모달들도 section 바로 아래에 배치 (transform 영향 받지 않음) -->
-      <div class="modal-overlay" data-modal="1">
-        <div class="modal-content">
-          <h3>프로그램 01 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="2">
-        <div class="modal-content">
-          <h3>프로그램 02 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="3">
-        <div class="modal-content">
-          <h3>프로그램 03 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="4">
-        <div class="modal-content">
-          <h3>프로그램 04 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="5">
-        <div class="modal-content">
-          <h3>프로그램 05 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="6">
-        <div class="modal-content">
-          <h3>프로그램 06 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="7">
-        <div class="modal-content">
-          <h3>프로그램 07 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="modal-overlay" data-modal="8">
-        <div class="modal-content">
-          <h3>프로그램 08 상세정보</h3>
-          <p>상세 설명 텍스트...</p>
-          <label for="modal-close" class="close-btn">[닫기]</label>
-        </div>
-      </div>
-
-      <div class="program-container">
-        <div class="program-item">
-          <label for="modal-1" class="item-card">
-            <img src="image1.jpg" alt="P1" />
-            <span class="program-name">프로그램 명칭 01</span>
-          </label>
+        <!-- 모달들도 section 바로 아래에 배치 (transform 영향 받지 않음) -->
+        <div class="modal-overlay" data-modal="1">
+            <div class="modal-content">
+                <img src="프로그램/1.jpg" alt="">
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-2" class="item-card">
-            <img src="image2.jpg" alt="P2" />
-            <span class="program-name">프로그램 명칭 02</span>
-          </label>
+        <div class="modal-overlay" data-modal="2">
+            <div class="modal-content">
+                <h3>프로그램 02 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-3" class="item-card">
-            <img src="image3.jpg" alt="P3" />
-            <span class="program-name">프로그램 명칭 03</span>
-          </label>
+        <div class="modal-overlay" data-modal="3">
+            <div class="modal-content">
+                <h3>프로그램 03 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-4" class="item-card">
-            <img src="image4.jpg" alt="P4" />
-            <span class="program-name">프로그램 명칭 04</span>
-          </label>
+        <div class="modal-overlay" data-modal="4">
+            <div class="modal-content">
+                <h3>프로그램 04 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-5" class="item-card">
-            <img src="image4.jpg" alt="P5" />
-            <span class="program-name">프로그램 명칭 05</span>
-          </label>
+        <div class="modal-overlay" data-modal="5">
+            <div class="modal-content">
+                <h3>프로그램 05 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-6" class="item-card">
-            <img src="image4.jpg" alt="P6" />
-            <span class="program-name">프로그램 명칭 06</span>
-          </label>
+        <div class="modal-overlay" data-modal="6">
+            <div class="modal-content">
+                <h3>프로그램 06 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-7" class="item-card">
-            <img src="image4.jpg" alt="P7" />
-            <span class="program-name">프로그램 명칭 07</span>
-          </label>
+        <div class="modal-overlay" data-modal="7">
+            <div class="modal-content">
+                <h3>프로그램 07 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
 
-        <div class="program-item">
-          <label for="modal-8" class="item-card">
-            <img src="image4.jpg" alt="P8" />
-            <span class="program-name">프로그램 명칭 08</span>
-          </label>
+        <div class="modal-overlay" data-modal="8">
+            <div class="modal-content">
+                <h3>프로그램 08 상세정보</h3>
+                <p>상세 설명 텍스트...</p>
+                <label for="modal-close" class="close-btn">[닫기]</label>
+            </div>
         </div>
-      </div>
+
+        <div class="program-container">
+            <div class="program-item">
+                <label for="modal-1" class="item-card">
+                    <img src="프로그램/1.jpg" alt="P2">
+                    <span class="program-name">프로그램 명칭 01</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-2" class="item-card">
+                    <img src="프로그램/2.png" alt="P2" />
+                    <span class="program-name">프로그램 명칭 02</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-3" class="item-card">
+                    <img src="프로그램/3.jpg" alt="P3" />
+                    <span class="program-name">프로그램 명칭 03</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-4" class="item-card">
+                    <img src="프로그램/4.png" alt="P4" />
+                    <span class="program-name">프로그램 명칭 04</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-5" class="item-card">
+                    <img src="프로그램/5.jpg" alt="P5" />
+                    <span class="program-name">프로그램 명칭 05</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-6" class="item-card">
+                    <img src="프로그램/6.jpg" alt="P6" />
+                    <span class="program-name">프로그램 명칭 06</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-7" class="item-card">
+                    <img src="프로그램/7.jpg" alt="P7" />
+                    <span class="program-name">프로그램 명칭 07</span>
+                </label>
+            </div>
+
+            <div class="program-item">
+                <label for="modal-8" class="item-card">
+                    <img src="프로그램/8.jpg" alt="P8" />
+                    <span class="program-name">프로그램 명칭 08</span>
+                </label>
+            </div>
+        </div>
     </section>
 
-        <footer>
-            <div class="top-footer">
-                <div class="left">
-                    <img src="images/images (1).png" alt="">
-                    <p>인천시 부평구 무네미로 448번길 77</p>
-                    <p>한국산업인력공단 글로벌숙련기술진흥원</p>
-                </div>
-                <div class="right">
-                    <div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>  
-            <hr>
-            <div class="bottom-footer">
-                <p>문의전화안내 1644-8000 | 운영시간(평일) 09:00~18:00</p>
-                <p>COPYRIGHTⓒ 2016 HRDKOREA</p>
+    <footer>
+        <div class="top-footer">
+            <div class="left">
+                <img src="images/images (1).png" alt="">
+                <p>인천시 부평구 무네미로 448번길 77</p>
+                <p>한국산업인력공단 글로벌숙련기술진흥원</p>
             </div>
-        </footer>
-    </body>
-    
-    </html>
+            <div class="right">
+                <div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="bottom-footer">
+            <p>문의전화안내 1644-8000 | 운영시간(평일) 09:00~18:00</p>
+            <p>COPYRIGHTⓒ 2016 HRDKOREA</p>
+        </div>
+    </footer>
+</body>
+
+</html>
