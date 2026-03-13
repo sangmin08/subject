@@ -176,16 +176,13 @@ header {
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    color: #243447;
+    color: #4d5d6c;
     transition: background-color 0.2s, color 0.2s;
 }
 
-.login a:first-child {
-}
-
 .login a:hover {
-    color: #fff;
-    background-color: #1f3a5f;
+    color: #243447;
+    background-color: #eef3f8;
 }
 
 #sign-in {
@@ -415,7 +412,7 @@ header {
 /*  */
 
 section {
-    margin: auto;
+    margin: 50px auto;
     width: 1200px;
 }
 
@@ -633,6 +630,8 @@ input[type="radio"] {
             margin-top: 50px;
             display: grid;
             grid-template-columns: repeat(7, 1fr);
+            border-bottom: 1px solid #000;
+            border-top: 1px solid #000;
         }
 
         .calendar-wrapper > label {
@@ -642,16 +641,14 @@ input[type="radio"] {
             cursor: pointer;
         }
 
+        .calendar-grid i {
+        }
+
         .calendar-wrapper > input:checked + label{
             background-color: #1f3a5f;
             color: #fff;
         }
-        .calendar-grid > span {
-            border-bottom: 1px solid #000;
-            height: 30%;
-            text-align: center;
-        }
-        
+
         .e2026m4{
             display:none;
         }
@@ -745,7 +742,7 @@ input[type="radio"] {
       /* 기본 레이아웃 및 숨김 처리 */
       .book-slider {
         position: relative;
-        width: 800px;
+        width: 400px;
         height: 500px;
         overflow: hidden;
         margin: 0 auto;
@@ -831,7 +828,7 @@ input[type="radio"] {
       .controls label {
         cursor: pointer;
         padding: 10px 20px;
-        background: #333;
+        background: #1f3a5f;
         color: #fff;
         border-radius: 5px;
         animation: disableClick var(--sp) forwards;
@@ -851,7 +848,10 @@ input[type="radio"] {
       [id^="r1-"]:checked ~ .controls-1,
       [id^="r2-"]:checked ~ .controls-2,
       [id^="r3-"]:checked ~ .controls-3,
-      [id^="r4-"]:checked ~ .controls-4 {
+      [id^="r4-"]:checked ~ .controls-4,
+      [id^="r5-"]:checked ~ .controls-5,
+      [id^="r6-"]:checked ~ .controls-6,
+      [id^="r7-"]:checked ~ .controls-7 {
         display: flex;
       }
 
@@ -859,90 +859,54 @@ input[type="radio"] {
         display: block;
       }
 
-      /* 1번으로 진입 */
-      #r1-next:checked ~ .slides-container .slide1 {
+      #r1-next:checked ~ .slides-container .slide1,
+      #r2-next:checked ~ .slides-container .slide2,
+      #r3-next:checked ~ .slides-container .slide3,
+      #r4-next:checked ~ .slides-container .slide4,
+      #r5-next:checked ~ .slides-container .slide5,
+      #r6-next:checked ~ .slides-container .slide6,
+      #r7-next:checked ~ .slides-container .slide7
+      {
         display: block;
         animation: var(--in-R);
       }
 
-      #r1-next:checked ~ .slides-container .slide4 {
+      #r1-next:checked ~ .slides-container .slide7,
+      #r2-next:checked ~ .slides-container .slide1,
+      #r3-next:checked ~ .slides-container .slide2,
+      #r4-next:checked ~ .slides-container .slide3,
+      #r5-next:checked ~ .slides-container .slide4,
+      #r6-next:checked ~ .slides-container .slide5,
+      #r7-next:checked ~ .slides-container .slide6
+      {
         display: block;
         animation: var(--out-L);
       }
 
-      /* <- 이전 슬라이드 번호(최대값) */
-      #r1-prev:checked ~ .slides-container .slide1 {
+      #r1-prev:checked ~ .slides-container .slide1,
+      #r2-prev:checked ~ .slides-container .slide2,
+      #r3-prev:checked ~ .slides-container .slide3,
+      #r4-prev:checked ~ .slides-container .slide4,
+      #r5-prev:checked ~ .slides-container .slide5,
+      #r6-prev:checked ~ .slides-container .slide6,
+      #r7-prev:checked ~ .slides-container .slide7
+      {
         display: block;
         animation: var(--in-L);
       }
 
-      #r1-prev:checked ~ .slides-container .slide2 {
+      #r1-prev:checked ~ .slides-container .slide2
+      #r2-prev:checked ~ .slides-container .slide3
+      #r3-prev:checked ~ .slides-container .slide4
+      #r4-prev:checked ~ .slides-container .slide5
+      #r5-prev:checked ~ .slides-container .slide6
+      #r6-prev:checked ~ .slides-container .slide7
+      #r7-prev:checked ~ .slides-container .slide1
+      {
         display: block;
         animation: var(--out-R);
       }
 
-      /* 2번으로 진입 */
-      #r2-next:checked ~ .slides-container .slide2 {
-        display: block;
-        animation: var(--in-R);
-      }
-
-      #r2-next:checked ~ .slides-container .slide1 {
-        display: block;
-        animation: var(--out-L);
-      }
-
-      #r2-prev:checked ~ .slides-container .slide2 {
-        display: block;
-        animation: var(--in-L);
-      }
-
-      #r2-prev:checked ~ .slides-container .slide3 {
-        display: block;
-        animation: var(--out-R);
-      }
-
-      /* 3번으로 진입 */
-      #r3-next:checked ~ .slides-container .slide3 {
-        display: block;
-        animation: var(--in-R);
-      }
-
-      #r3-next:checked ~ .slides-container .slide2 {
-        display: block;
-        animation: var(--out-L);
-      }
-
-      #r3-prev:checked ~ .slides-container .slide3 {
-        display: block;
-        animation: var(--in-L);
-      }
-
-      #r3-prev:checked ~ .slides-container .slide4 {
-        display: block;
-        animation: var(--out-R);
-      }
-
-      /* 4번으로 진입 */
-      #r4-next:checked ~ .slides-container .slide4 {
-        display: block;
-        animation: var(--in-R);
-      }
-
-      #r4-next:checked ~ .slides-container .slide3 {
-        display: block;
-        animation: var(--out-L);
-      }
-
-      #r4-prev:checked ~ .slides-container .slide4 {
-        display: block;
-        animation: var(--in-L);
-      }
-
-      #r4-prev:checked ~ .slides-container .slide1 {
-        display: block;
-        animation: var(--out-R);
-      }
 /*  */
 
 footer {
