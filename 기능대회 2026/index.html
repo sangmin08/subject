@@ -22,10 +22,10 @@
                         <span class="icon"></span>
                     </div>
                     <ul class="submenu">
-                        <li class="submenu-item"><a href="intro.html">도서관소개</a></li>
-                        <li class="submenu-item"><a href="#">도서관현황</a></li>
+                        <li class="submenu-item"><a href="intro.html">도서관소개</a></ldiv>
+                        <li class="submenu-item"><a href="#">도서관현황</a></ldiv>
                     </ul>
-                </li>
+                </ldiv>
 
                 <li class="menu-item has-sub">
                     <div class="menu-label">
@@ -34,10 +34,10 @@
                         <span class="icon"></span>
                     </div>
                     <ul class="submenu">
-                        <li class="submenu-item"><a href="#">자료실</a></li>
-                        <li class="submenu-item"><a href="#">열람실 예약</a></li>
+                        <li class="submenu-item"><a href="#">자료실</a></ldiv>
+                        <li class="submenu-item"><a href="#">열람실 예약</a></ldiv>
                     </ul>
-                </li>
+                </ldiv>
 
                 <li class="menu-item has-sub">
                     <div class="menu-label">
@@ -46,33 +46,35 @@
                         <span class="icon"></span>
                     </div>
                     <ul class="submenu">
-                        <li class="submenu-item"><a href="#">회원가입</a></li>
-                        <li class="submenu-item"><a href="#">마이페이지</a></li>
+                        <li class="submenu-item"><a href="#">회원가입</a></ldiv>
+                        <li class="submenu-item"><a href="#">마이페이지</a></ldiv>
                     </ul>
-                </li>
+                </ldiv>
 
                 <li class="menu-item">
                     <div class="menu-label">
                         <a href="#">도서검색</a>
                     </div>
-                </li>
+                </ldiv>
 
                 <li class="menu-item">
                     <div class="menu-label">
                         <a href="#">도서관리자</a>
                     </div>
-                </li>
+                </ldiv>
             </ul>
         </nav>
         <div class="login">
             <a href="#sign-in">로그인</a>
+            <a href="#sign-in">회원가입</a>
         </div>
     </header>
-    <div class="popup">
-        <div>
-            <input id="close" type="checkbox">
+
+    <input id="close" type="checkbox">
+    <div class="popups">
+        <div class="popup">
             <div>
-                <h1>제목</h1>
+                <h1 class="title">제목</h1>
                 <p>내용</p>
                 <div class="img">
                     <img src="images/images (2).jpg" alt="이미지.jpg">
@@ -134,7 +136,7 @@
 
     <section>
         <div class="notice">
-            <h1>도서관 소식</h1>
+            <h1 class="title">도서관 소식</h1>
 
             <input type="radio" name="news" id="news1" checked>
             <input type="radio" name="news" id="news2">
@@ -235,11 +237,11 @@
     <section >
         <div class="program-section">
 
-            <h1>이달의 개최 프로그램</h1>
+        <h1 class="title">이달의 개최 프로그램</h1>
             
             <!-- 라디오 버튼들을 section 바로 아래에 배치 -->
-            <input type="radio" name="modal-group" id="modal-close" class="modal-state" checked />
-            <input type="radio" name="modal-group" id="modal-1" class="modal-state" />
+        <input type="radio" name="modal-group" id="modal-close" class="modal-state" checked />
+        <input type="radio" name="modal-group" id="modal-1" class="modal-state" />
         <input type="radio" name="modal-group" id="modal-2" class="modal-state" />
         <input type="radio" name="modal-group" id="modal-3" class="modal-state" />
         <input type="radio" name="modal-group" id="modal-4" class="modal-state" />
@@ -365,35 +367,58 @@
     </div>
     </section>
     <section>
-        <h1>행사달력</h1>
+        <h1 class="title">행사달력</h1>
         <div class="calendar-wrapper">
-        <input type="radio" name="y" id="y25"><label for="y25">2025</label>
-        <input type="radio" name="y" id="y26" checked><label for="y26">2026</label>
-        <input type="radio" name="y" id="y27"><label for="y27">2027</label>
+        <input type="radio" name="y" id="y25">
+        <input type="radio" name="y" id="y26" checked>
+        <input type="radio" name="y" id="y27">
+        
+        <input type="radio" name="m" id="m1">
+        <input type="radio" name="m" id="m2">
+        <input type="radio" name="m" id="m3">
+        <input type="radio" name="m" id="m4" checked>
+        <input type="radio" name="m" id="m5">
+        <input type="radio" name="m" id="m6">
+        <input type="radio" name="m" id="m7">
+        <input type="radio" name="m" id="m8">
+        <input type="radio" name="m" id="m9">
+        <input type="radio" name="m" id="m10">
+        <input type="radio" name="m" id="m11">
+        <input type="radio" name="m" id="m12">
+        
+        <div class="labels">
 
-        <input type="radio" name="m" id="m1"><label for="m1">1월</label>
-        <input type="radio" name="m" id="m2"><label for="m2">2월</label>
-        <input type="radio" name="m" id="m3"><label for="m3">3월</label>
-        <input type="radio" name="m" id="m4" checked><label for="m4">4월</label>
-        <input type="radio" name="m" id="m5"><label for="m5">5월</label>
-        <input type="radio" name="m" id="m6"><label for="m6">6월</label>
-        <input type="radio" name="m" id="m7"><label for="m7">7월</label>
-        <input type="radio" name="m" id="m8"><label for="m8">8월</label>
-        <input type="radio" name="m" id="m9"><label for="m9">9월</label>
-        <input type="radio" name="m" id="m10"><label for="m10">10월</label>
-        <input type="radio" name="m" id="m11"><label for="m11">11월</label>
-        <input type="radio" name="m" id="m12"><label for="m12">12월</label>
+            <div class="years">
+                <label for="y25">2025</label>
+                <label for="y26">2026</label>
+                <label for="y27">2027</label>
+            </div>
+            <div class="months">
+                <label for="m1">1월</label>
+                <label for="m2">2월</label>
+                <label for="m3">3월</label>
+                <label for="m4">4월</label>
+                <label for="m5">5월</label>
+                <label for="m6">6월</label>
+                <label for="m7">7월</label>
+                <label for="m8">8월</label>
+                <label for="m9">9월</label>
+                <label for="m10">10월</label>
+                <label for="m11">11월</label>
+                <label for="m12">12월</label>
+            </div>
+        </div>
 
         <div class="calendar-grid">
-            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
-            <i class="d1">1<span class="e2026m4">전시[책피는숙련도서관] 4월 북큐레이션</span></i><i>2</i><i>3<span class="e2026m4">전시[책피는숙련도서관] 4월 북큐레이션</span></i><i>4</i><i>5</i><i>6<span class="e2026m4">휴관 정기휴관일</span></i><i>7</i><i>8</i><i>9</i><i>10<span class="e2026m4">숙련기술인과의 만남</span></i>
-            <i>11</i><i>12</i><i>13<span class="e2026m4">행사</span></i><i>14</i><i>15</i><i>16</i><i>17<span class="e2026m4">행사 책읽는 숙련광장 행사 기능 책마당 행사 책읽는 숙련기술 전시 [책피는 숙련기술도서관] 4월 북큐레이션</span></i><i>18</i><i>19</i><i>20<span class="e2026m4">휴관정기휴관일</span></i>
-            <i>21<span class="e2026m4">행사 숙련기술 책마당 행사 책읽는 맑은냇가 행사 책읽는 숙련광장 전시 [책피는 숙련기술도서관] 4월 북큐레이션</span></i><i>22</i><i>23</i><i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i><i>31</i>
+            <div class="month">일</div><div class="month">월</div><div class="month">화</div><div class="month">수</div><div class="month">목</div><div class="month">금</div><div class="month">토</div>
+            <div class="d1">1<span class="e2026m4">전시[책피는숙련도서관] 4월 북큐레이션</span></div><div>2</div><div>3<span class="e2026m4">전시[책피는숙련도서관] 4월 북큐레이션</span></div><div>4</div><div>5</div><div>6<span class="e2026m4">휴관 정기휴관일</span></div><div>7</div><div>8</div><div>9</div><div>10<span class="e2026m4">숙련기술인과의 만남</span></div>
+            <div>11</div><div>12</div><div>13<span class="e2026m4">휴관정기휴관일</span></div><div>14</div><div>15</div><div>16</div><div>17<span class="e2026m4">행사 책읽는 숙련광장</span><span class="e2026m4">행사 기능 책마당</span><span class="e2026m4">행사 책읽는 숙련기술</span><span class="e2026m4">전시 [책피는 숙련기술도서관] 4월 북큐레이션</span></div><div>18</div><div>19</div><div>20<span class="e2026m4">휴관정기휴관일</span></div>
+            <div>21<span class="e2026m4">행사 숙련기술 책마당</span><span class="e2026m4">행사 책읽는 맑은냇가</span><span class="e2026m4">행사 책읽는 숙련광장</span><span class="e2026m4">전시 [책피는 숙련기술도서관] 4월 북큐레이션</span></div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
         </div>
     </div>
     </section>
     <section>
-        <h1>추천도서</h1>
+        <h1 class="title">추천도서</h1>
         <div class="book-slider">
       <input type="radio" name="slider" id="r1-def" checked />
       <input type="radio" name="slider" id="r1-next" /><input

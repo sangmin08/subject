@@ -11,23 +11,66 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.html"><img src="" alt="logo.jpg"></a>
+            <a href="index.html"><img src="images/images (2).png" alt="logo.jpg"></a>
         </div>
-        <div class="navi">
-            <a href="intro.html">도서관소개</a>
-            <a href="#">도서자료실</a>
-            <a href="#">회원서비스</a>
-            <a href="#">도서검색</a>
-            <a href="#">도서관리자</a>
-        </div>
+        <nav class="gnb">
+            <ul class="main-menu">
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">도서관소개</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="intro.html">도서관소개</a></li>
+                        <li class="submenu-item"><a href="#">도서관현황</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">도서자료실</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="#">자료실</a></li>
+                        <li class="submenu-item"><a href="#">열람실 예약</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item has-sub">
+                    <div class="menu-label">
+                        <button class="trigger"></button>
+                        <a href="#">회원서비스</a>
+                        <span class="icon"></span>
+                    </div>
+                    <ul class="submenu">
+                        <li class="submenu-item"><a href="#">회원가입</a></li>
+                        <li class="submenu-item"><a href="#">마이페이지</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item">
+                    <div class="menu-label">
+                        <a href="#">도서검색</a>
+                    </div>
+                </li>
+
+                <li class="menu-item">
+                    <div class="menu-label">
+                        <a href="#">도서관리자</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
         <div class="login">
             <a href="#sign-in">로그인</a>
-            <a href="#sign-up">회원가입</a>
         </div>
     </header>
-    <div id="sign-in">
+<div id="sign-in">
         <form action="#" method="POST">
-            <a class="cancel" href="intro.html">X</a>
+            <a class="cancel" href="#">X</a>
             <div>
                 <h2>로그인</h2>
                 <input type="hidden" name="mode" value="login">
@@ -47,56 +90,57 @@
     <section class="history">
         <h2>도서관 연혁</h2>
 
-        <div class="item">
-            <div class="year">2024</div>
-            <div class="text">06. 28 스킬스북도서관 재개관 (SOC 리모델링)</div>
-        </div>
-
-        <div class="item">
-            <div class="year">2021</div>
-            <div class="text">05월 ~ 08월 △△도서관 시설개선사업</div>
-        </div>
-
-        <div class="item">
-            <div class="year">2020</div>
-            <div class="text">03월 ~ 04월 △△기적의도서관 도서관 시설 개보수</div>
-        </div>
-
-        <div class="item">
-            <div class="year">2019</div>
-            <div class="text">
-                08. 28 ◎◎도서관 개관<br>
-                07. 01 조직개편(△△도서관 신설)
+        <div class="year-list">
+            <div class="item">
+                <div class="year">2024</div>
+                <div class="text">06. 28 스킬스북도서관 재개관 (SOC 리모델링)</div>
             </div>
-        </div>
-
-        <div class="item">
-            <div class="year">2018</div>
-            <div class="text">
-                09. 10 정보팀, 시설팀 신설<br>
-                08. 01 책밴드 서비스 시행
+            
+            <div class="item">
+                <div class="year">2021</div>
+                <div class="text">05월 ~ 08월 △△도서관 시설개선사업</div>
             </div>
-        </div>
-
-        <div class="item">
-            <div class="year">2017</div>
-            <div class="text">
-                12. 20 △△도서관 제6대 관장 취임<br>
-                11. 15 △△도서관 6차 수탁기관 선정
+            
+            <div class="item">
+                <div class="year">2020</div>
+                <div class="text">03월 ~ 04월 △△기적의도서관 도서관 시설 개보수</div>
             </div>
-        </div>
-
-        <div class="item">
-            <div class="year">2016</div>
-            <div class="text">
-                05. 15 △△도서관 폐관<br>
-                05. 03 ◇◇도서관 개관
+            
+            <div class="item">
+                <div class="year">2019</div>
+                <div class="text">
+                    08. 28 ◎◎도서관 개관<br>
+                    07. 01 조직개편(△△도서관 신설)
+                </div>
             </div>
-        </div>
-
-        <div class="item">
-            <div class="year">2015</div>
-            <div class="text">
+            
+            <div class="item">
+                <div class="year">2018</div>
+                <div class="text">
+                    09. 10 정보팀, 시설팀 신설<br>
+                    08. 01 책밴드 서비스 시행
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="year">2017</div>
+                <div class="text">
+                    12. 20 △△도서관 제6대 관장 취임<br>
+                    11. 15 △△도서관 6차 수탁기관 선정
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="year">2016</div>
+                <div class="text">
+                    05. 15 △△도서관 폐관<br>
+                    05. 03 ◇◇도서관 개관
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="year">2015</div>
+                <div class="text">
                 07. 08 조직개편으로 조직 및 도서관 명칭 변경<br>
                 - 도서관평생학습본부 ← 평생교육원<br>
                 - 도서관정책팀 신설<br>
@@ -104,7 +148,7 @@
                 06. 02 □□도서관 통합공공도서관시스템 도입
             </div>
         </div>
-
+        
         <div class="item">
             <div class="year">2014</div>
             <div class="text">
@@ -112,6 +156,7 @@
                 03. 18 ○○도서관 개관
             </div>
         </div>
+    </div>
     </section>
     <footer>
         <div class="top-footer">
